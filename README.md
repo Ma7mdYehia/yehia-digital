@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Yehia.Digital
 
 Personal portfolio, CV system, AI transformation demos, dashboards, and proof-of-work project for Mohamed Yehia.
@@ -19,3 +20,6 @@ Building marketing engines, e-commerce growth systems, AI-powered dashboards, in
 - Company Reporting System Demo
 - GitHub Proof-of-Work
 - LinkedIn & Job Application Assets
+=======
+# yehia-digital
+>>>>>>> f973fdd28c92b892da6abf5d13c0f4123d331346
