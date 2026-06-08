@@ -1,0 +1,124 @@
+[
+  {
+    "month": "2025-01",
+    "headline": "Revenue opened at AED 45,440 with 320 orders and AED 142 AOV, creating a clean baseline for the growth period.",
+    "what_improved": [
+      "Meta prospecting generated the strongest paid contribution at the start of the period.",
+      "Organic reach was already close to 1M, showing a strong owned-audience base."
+    ],
+    "what_declined": [
+      "Cart abandonment remains high at the baseline stage, suggesting checkout friction or weak offer urgency."
+    ],
+    "why": "January is the baseline month, so the main signal is channel mix and funnel starting point.",
+    "recommended_actions": [
+      "Audit checkout steps and payment/shipping clarity.",
+      "Use Meta prospecting learnings to create 3 offer-led creative angles.",
+      "Start tracking repeat buyer segments from month one."
+    ],
+    "budget_reallocation": "Hold budget steady while collecting cleaner channel and funnel baselines.",
+    "product_opportunity": "Healthy Bread Bundle is the top acquisition product and should anchor entry offers.",
+    "retention_recommendation": "Create a 14-day follow-up email for first-time buyers with bundle education."
+  },
+  {
+    "month": "2025-02",
+    "headline": "Revenue grew to AED 52,925, up 16.5% month over month, supported by stronger order volume and a slight AOV lift.",
+    "what_improved": [
+      "Orders increased from 320 to 365 while AOV rose to AED 145.",
+      "Organic reach crossed 1.05M and repeat rate improved to 39.7%."
+    ],
+    "what_declined": [
+      "CAC edged up slightly to AED 84.1, so paid scaling should remain controlled."
+    ],
+    "why": "Growth came from a balanced mix of traffic expansion and better returning-customer contribution.",
+    "recommended_actions": [
+      "Keep Meta and Google budgets stable while improving creative testing speed.",
+      "Build a simple bundle upsell to push AOV above AED 150.",
+      "Segment email buyers by product preference."
+    ],
+    "budget_reallocation": "No major shift; keep TikTok capped until creative efficiency improves.",
+    "product_opportunity": "High Protein Bread is gaining share and should get its own content angle.",
+    "retention_recommendation": "Launch a second-purchase reminder based on first purchase date."
+  },
+  {
+    "month": "2025-03",
+    "headline": "Revenue reached AED 63,640, up 20.2% MoM, with repeat rate rising to 41.9%.",
+    "what_improved": [
+      "Orders increased to 430 and conversion improved against a growing session base.",
+      "Email revenue climbed, showing owned-channel monetisation is starting to work."
+    ],
+    "what_declined": [
+      "TikTok efficiency is beginning to soften compared with Meta and Google."
+    ],
+    "why": "The business is now benefiting from both new acquisition and early lifecycle activity, not just paid traffic.",
+    "recommended_actions": [
+      "Scale Meta prospecting gradually while protecting CAC.",
+      "Refresh TikTok creative before increasing spend.",
+      "Introduce product recommendation blocks in email."
+    ],
+    "budget_reallocation": "Shift a small test budget from TikTok into Meta retargeting.",
+    "product_opportunity": "High Protein Bread should be tested as the lead product in performance creatives.",
+    "retention_recommendation": "Create a first-to-second order automation around best-selling SKUs."
+  },
+  {
+    "month": "2025-04",
+    "headline": "Revenue rose to AED 76,255 with 505 orders, while returning customers reached 230.",
+    "what_improved": [
+      "Repeat rate hit 45.5%, improving the quality of growth.",
+      "AOV crossed AED 151, softening CAC pressure."
+    ],
+    "what_declined": [
+      "CAC is at its highest point in the period at AED 86.5, requiring tighter budget control."
+    ],
+    "why": "Revenue growth is healthy, but the cost base is rising as paid spend scales.",
+    "recommended_actions": [
+      "Prioritise campaigns with ROAS above 3.2x.",
+      "Add checkout urgency and bundle incentives to reduce abandonment.",
+      "Create a VIP segment for customers with 3+ orders."
+    ],
+    "budget_reallocation": "Hold Google, scale Meta only where ROAS remains above the benchmark, and cap TikTok.",
+    "product_opportunity": "Toast Loaf is showing steady contribution and could support family-week bundles.",
+    "retention_recommendation": "Start VIP tagging and send early-access bundle offers to repeat buyers."
+  },
+  {
+    "month": "2025-05",
+    "headline": "Revenue reached AED 95,480, up 25.2% MoM, with returning customers now nearly matching new customers.",
+    "what_improved": [
+      "Repeat rate rose to 48.4%, showing the retention engine is becoming material.",
+      "Email revenue reached AED 11,200, increasing owned-channel contribution."
+    ],
+    "what_declined": [
+      "TikTok ROAS continues to lag and should not be scaled without new creative."
+    ],
+    "why": "The strongest growth driver is the compounding returning-customer base combined with higher AOV.",
+    "recommended_actions": [
+      "Scale Meta prospecting and retargeting where CAC remains stable.",
+      "Build a dedicated High Protein Bread bundle.",
+      "Run a checkout recovery message through email or WhatsApp."
+    ],
+    "budget_reallocation": "Move 10% of TikTok budget into Meta retargeting and email list growth.",
+    "product_opportunity": "High Protein Bread is becoming a hero SKU and deserves bundle and content priority.",
+    "retention_recommendation": "Launch a win-back flow for customers who bought once but did not reorder within 30 days."
+  },
+  {
+    "month": "2025-06",
+    "headline": "Revenue reached AED 120,080, up 25.8% month over month and 2.6x since January.",
+    "what_improved": [
+      "Blended ROAS rose to 3.6x as Meta prospecting scaled efficiently.",
+      "Repeat rate climbed to 52.6%, the highest in the period.",
+      "Email revenue reached AED 15,800, showing stronger owned-channel monetisation."
+    ],
+    "what_declined": [
+      "TikTok ROAS slipped versus the rest of the paid mix; creative fatigue is likely."
+    ],
+    "why": "Growth was driven by improved retention and stronger owned-channel contribution, not just higher paid spend — a healthier mix than prior months.",
+    "recommended_actions": [
+      "Shift around AED 2,000 from TikTok to Meta prospecting where CAC is stronger.",
+      "Refresh TikTok creative with 3 new UGC angles before re-scaling.",
+      "Launch a win-back email flow targeting one-time buyers from Q1.",
+      "Promote High Protein Bread bundles to lift AOV further."
+    ],
+    "budget_reallocation": "Move 15% of TikTok budget to Meta; hold Google at the current level.",
+    "product_opportunity": "High Protein Bread is now the breakout SKU; bundle it with Oats Bread to lift AOV.",
+    "retention_recommendation": "Introduce a second-order discount triggered 14 days after first purchase."
+  }
+]

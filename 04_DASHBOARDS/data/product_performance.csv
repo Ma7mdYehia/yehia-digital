@@ -1,0 +1,49 @@
+month,product,units_sold,revenue,pct_of_revenue
+2025-01,Healthy Bread Bundle,182,9088,20.0
+2025-01,High Protein Bread,280,7270,16.0
+2025-01,High Fiber Bread,277,6362,14.0
+2025-01,Whole Wheat Bread,268,5907,13.0
+2025-01,Oats Bread,237,5453,12.0
+2025-01,Burger Buns,227,4090,9.0
+2025-01,Toast Loaf,204,4090,9.0
+2025-01,Samoon,199,3180,7.0
+2025-02,Healthy Bread Bundle,201,10056,19.0
+2025-02,High Protein Bread,346,8997,17.0
+2025-02,High Fiber Bread,322,7410,14.0
+2025-02,Whole Wheat Bread,313,6880,13.0
+2025-02,Oats Bread,276,6351,12.0
+2025-02,Burger Buns,265,4763,9.0
+2025-02,Toast Loaf,238,4763,9.0
+2025-02,Samoon,232,3705,7.0
+2025-03,Healthy Bread Bundle,229,11455,18.0
+2025-03,High Protein Bread,441,11455,18.0
+2025-03,High Fiber Bread,387,8910,14.0
+2025-03,Whole Wheat Bread,347,7637,12.0
+2025-03,Oats Bread,332,7637,12.0
+2025-03,Burger Buns,318,5728,9.0
+2025-03,Toast Loaf,318,6364,10.0
+2025-03,Samoon,278,4454,7.0
+2025-04,Healthy Bread Bundle,275,13726,18.0
+2025-04,High Protein Bread,557,14488,19.0
+2025-04,High Fiber Bread,431,9913,13.0
+2025-04,Whole Wheat Bread,416,9151,12.0
+2025-04,Oats Bread,398,9151,12.0
+2025-04,Burger Buns,381,6863,9.0
+2025-04,Toast Loaf,381,7626,10.0
+2025-04,Samoon,334,5337,7.0
+2025-05,Healthy Bread Bundle,325,16232,17.0
+2025-05,High Protein Bread,771,20051,21.0
+2025-05,High Fiber Bread,540,12412,13.0
+2025-05,Whole Wheat Bread,477,10503,11.0
+2025-05,Oats Bread,498,11458,12.0
+2025-05,Burger Buns,477,8593,9.0
+2025-05,Toast Loaf,477,9548,10.0
+2025-05,Samoon,418,6683,7.0
+2025-06,Healthy Bread Bundle,384,19213,16.0
+2025-06,High Protein Bread,1016,26418,22.0
+2025-06,High Fiber Bread,679,15610,13.0
+2025-06,Whole Wheat Bread,600,13209,11.0
+2025-06,Oats Bread,627,14410,12.0
+2025-06,Burger Buns,600,10807,9.0
+2025-06,Toast Loaf,600,12008,10.0
+2025-06,Samoon,525,8405,7.0

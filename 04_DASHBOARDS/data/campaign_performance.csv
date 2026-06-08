@@ -1,0 +1,37 @@
+month,campaign,channel,spend,revenue,orders,roas,cac,status
+2025-01,Protein Range — Prospecting,Meta,3096,6907,49,2.23,88.5,hold
+2025-01,Healthy Bundle — Retargeting,Meta,1656,5180,36,3.13,66.2,hold
+2025-01,Bakery Search — High Intent,Google,3025,5071,36,1.68,121.0,cut
+2025-01,Brand Search — Defensive,Google,1375,2290,16,1.67,125.0,cut
+2025-01,TikTok UGC — Awareness,TikTok,2255,2181,15,0.97,225.5,cut
+2025-01,TikTok Bundle Offer,TikTok,1230,1454,10,1.18,175.7,cut
+2025-02,Protein Range — Prospecting,Meta,3504,7833,54,2.24,92.2,hold
+2025-02,Healthy Bundle — Retargeting,Meta,1874,5875,41,3.14,64.6,hold
+2025-02,Bakery Search — High Intent,Google,3245,6235,43,1.92,108.2,cut
+2025-02,Brand Search — Defensive,Google,1475,2816,19,1.91,113.5,cut
+2025-02,TikTok UGC — Awareness,TikTok,2448,2540,18,1.04,204.0,cut
+2025-02,TikTok Bundle Offer,TikTok,1335,1693,12,1.27,166.9,cut
+2025-03,Protein Range — Prospecting,Meta,4064,9673,65,2.38,88.3,hold
+2025-03,Healthy Bundle — Retargeting,Meta,2174,7255,49,3.34,62.1,scaling
+2025-03,Bakery Search — High Intent,Google,3575,7102,48,1.99,105.1,cut
+2025-03,Brand Search — Defensive,Google,1625,3207,22,1.97,108.3,cut
+2025-03,TikTok UGC — Awareness,TikTok,2778,2749,19,0.99,213.7,cut
+2025-03,TikTok Bundle Offer,TikTok,1515,1833,12,1.21,189.4,cut
+2025-04,Protein Range — Prospecting,Meta,4816,11896,79,2.47,86.0,hold
+2025-04,Healthy Bundle — Retargeting,Meta,2576,8922,59,3.46,61.3,scaling
+2025-04,Bakery Search — High Intent,Google,3905,8037,53,2.06,102.8,cut
+2025-04,Brand Search — Defensive,Google,1775,3630,24,2.05,104.4,cut
+2025-04,TikTok UGC — Awareness,TikTok,3025,3294,22,1.09,201.7,cut
+2025-04,TikTok Bundle Offer,TikTok,1650,2196,15,1.33,165.0,cut
+2025-05,Protein Range — Prospecting,Meta,5805,15277,99,2.63,81.8,hold
+2025-05,Healthy Bundle — Retargeting,Meta,3105,11458,74,3.69,58.6,scaling
+2025-05,Bakery Search — High Intent,Google,4400,10064,65,2.29,95.7,hold
+2025-05,Brand Search — Defensive,Google,2000,4545,30,2.27,95.2,hold
+2025-05,TikTok UGC — Awareness,TikTok,3300,3666,24,1.11,194.1,cut
+2025-05,TikTok Bundle Offer,TikTok,1800,2444,16,1.36,163.6,cut
+2025-06,Protein Range — Prospecting,Meta,6794,19693,125,2.9,75.5,hold
+2025-06,Healthy Bundle — Retargeting,Meta,3634,14770,93,4.06,55.1,scaling
+2025-06,Bakery Search — High Intent,Google,4950,12657,80,2.56,86.8,hold
+2025-06,Brand Search — Defensive,Google,2250,5716,36,2.54,90.0,hold
+2025-06,TikTok UGC — Awareness,TikTok,3410,4035,26,1.18,189.4,cut
+2025-06,TikTok Bundle Offer,TikTok,1860,2690,17,1.45,155.0,cut
