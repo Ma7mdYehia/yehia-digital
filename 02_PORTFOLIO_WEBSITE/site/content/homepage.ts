@@ -459,6 +459,32 @@ export const howIWork = {
   badges: ["AI-assisted", "GitHub-tracked", "ClickUp-managed", "Reporting-led"],
 };
 
-export const placeholderSections = [
-  { id: "contact", label: "Contact" },
-];
+/* -------------------------------------------------------------------------- */
+/*  Contact CTA                                                                */
+/* -------------------------------------------------------------------------- */
+
+// TODO: Replace placeholder hrefs once real contact details are confirmed:
+//   email    -> "mailto:<address>"
+//   linkedin -> "https://www.linkedin.com/in/<handle>"
+//   cv       -> "/Mohamed-Yehia-CV.pdf"  (file must exist in public/)
+// Until then, every CTA falls back to the in-page #contact anchor so the
+// buttons remain visually present without inventing any contact data.
+export const contactCTA = {
+  eyebrow: "Contact",
+  headline: "Let’s talk.",
+  body: "Open to senior roles in growth, e-commerce, marketing operations, and digital transformation across the GCC. The fastest way to reach me is by email or LinkedIn.",
+  location: "Based between Ajman, UAE and Cairo, Egypt.",
+  ctas: {
+    email:    { label: "Email me",     href: "#contact" },
+    linkedin: { label: "LinkedIn",     href: "#contact" },
+    cv:       { label: "Download CV",  href: "#download-cv" },
+  },
+};
+
+export const siteFooter = {
+  copyright:
+    "© Mohamed Yehia · Growth Marketing, E-commerce & AI Transformation · UAE · KSA · Egypt",
+};
+
+// Homepage is now feature-complete; no remaining placeholder sections.
+export const placeholderSections: { id: string; label: string }[] = [];

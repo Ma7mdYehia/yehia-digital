@@ -7,8 +7,8 @@ import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
 import HowIWorkSection from "@/components/HowIWorkSection";
-import SectionPlaceholder from "@/components/SectionPlaceholder";
-import { placeholderSections } from "@/content/homepage";
+import ContactCTA from "@/components/ContactCTA";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function HomePage() {
   return (
@@ -31,19 +31,10 @@ export default function HomePage() {
         <SelectedWorkSection />
         <ProfessionalJourney />
         <HowIWorkSection />
-
-        {placeholderSections.map((s) => (
-          <SectionPlaceholder key={s.id} id={s.id} label={s.label} />
-        ))}
+        <ContactCTA />
       </main>
 
-      <footer className="px-6 lg:pl-24 lg:pr-16 py-8 border-t border-white/[0.06]">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs text-[#94A3B8]/40 text-center">
-            © Mohamed Yehia · Growth Marketing, E-commerce &amp; AI Transformation · UAE · KSA · Egypt
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
