@@ -1,4 +1,5 @@
-import { siteFooter } from "@/content/homepage";
+import { siteFooter, contactLinks } from "@/content/homepage";
+import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
 
 export default function SiteFooter() {
   return (
@@ -6,22 +7,36 @@ export default function SiteFooter() {
       role="contentinfo"
       className="px-6 lg:pl-24 lg:pr-16 py-10 border-t border-white/[0.06]"
     >
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-        <p className="text-xs text-[#94A3B8]/50 leading-relaxed">
+      <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs text-[#94A3B8]/50 leading-relaxed order-2 sm:order-1 text-center sm:text-left">
           {siteFooter.copyright}
         </p>
-        <a
-          href="#home"
-          className="text-xs text-[#94A3B8]/60 hover:text-[#E8EDF2] transition-colors inline-flex items-center gap-1.5 group"
+
+        {/* Compact link row */}
+        <nav
+          aria-label="Footer links"
+          className="order-1 sm:order-2 flex items-center justify-center gap-1.5"
         >
-          Back to top
-          <span
-            aria-hidden
-            className="transition-transform group-hover:-translate-y-0.5"
+          {contactLinks.map((link) => {
+            const Icon = contactIcons[link.icon];
+            return (
+              <a
+                key={link.label}
+                {...contactAnchorProps(link)}
+                className="w-9 h-9 rounded-lg glass glass-hover flex items-center justify-center text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
+              >
+                <Icon size={15} strokeWidth={1.9} aria-hidden />
+              </a>
+            );
+          })}
+          <a
+            href="#home"
+            aria-label="Back to top"
+            className="ml-1 w-9 h-9 rounded-lg glass glass-hover flex items-center justify-center text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
           >
-            ↑
-          </span>
-        </a>
+            <span aria-hidden>↑</span>
+          </a>
+        </nav>
       </div>
     </footer>
   );

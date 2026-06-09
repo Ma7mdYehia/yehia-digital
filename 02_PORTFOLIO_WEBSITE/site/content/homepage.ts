@@ -682,23 +682,84 @@ export const howIWork = {
 /*  Contact CTA                                                                */
 /* -------------------------------------------------------------------------- */
 
-// TODO: Replace placeholder hrefs once real contact details are confirmed:
-//   email    -> "mailto:<address>"
-//   linkedin -> "https://www.linkedin.com/in/<handle>"
-//   cv       -> "/Mohamed-Yehia-CV.pdf"  (file must exist in public/)
-// Until then, every CTA falls back to the in-page #contact anchor so the
-// buttons remain visually present without inventing any contact data.
 export const contactCTA = {
   eyebrow: "Contact",
   headline: "Let’s talk.",
   body: "Open to senior roles in growth, e-commerce, marketing operations, and digital transformation across the GCC. The fastest way to reach me is by email or LinkedIn.",
   location: "Based between Ajman, UAE and Cairo, Egypt.",
-  ctas: {
-    email:    { label: "Email me",     href: "#contact" },
-    linkedin: { label: "LinkedIn",     href: "#contact" },
-    cv:       { label: "Download CV",  href: "#download-cv" },
-  },
 };
+
+export interface ContactLink {
+  label: string;
+  type: "email" | "cv" | "social";
+  href: string;
+  icon: "mail" | "linkedin" | "download" | "github" | "instagram" | "behance";
+  /** Primary actions row (Email / LinkedIn / Download CV). */
+  isPrimary: boolean;
+  /** No confirmed URL yet — rendered but non-misleading. */
+  isPlaceholder: boolean;
+  /** Opens in a new tab when true. */
+  external?: boolean;
+}
+
+// Confirmed values in use: GitHub (https://github.com/Ma7mdYehia),
+// email (ma7md.yehia@gmail.com), and the CV PDF (public/files/...).
+// TODO: replace these placeholder hrefs with real profile URLs once confirmed:
+//   LinkedIn  -> "https://www.linkedin.com/in/<handle>"
+//   Instagram -> "https://www.instagram.com/<handle>"
+//   Behance   -> "https://www.behance.net/<handle>"
+// Placeholders point to "#contact" (no fake destination, no new tab).
+export const contactLinks: ContactLink[] = [
+  {
+    label: "Email me",
+    type: "email",
+    href: "mailto:ma7md.yehia@gmail.com",
+    icon: "mail",
+    isPrimary: true,
+    isPlaceholder: false,
+  },
+  {
+    label: "LinkedIn",
+    type: "social",
+    href: "#contact",
+    icon: "linkedin",
+    isPrimary: true,
+    isPlaceholder: true,
+  },
+  {
+    label: "Download CV",
+    type: "cv",
+    href: "/files/mohamed-yehia-cv.pdf",
+    icon: "download",
+    isPrimary: true,
+    isPlaceholder: false,
+  },
+  {
+    label: "GitHub",
+    type: "social",
+    href: "https://github.com/Ma7mdYehia",
+    icon: "github",
+    isPrimary: false,
+    isPlaceholder: false,
+    external: true,
+  },
+  {
+    label: "Instagram",
+    type: "social",
+    href: "#contact",
+    icon: "instagram",
+    isPrimary: false,
+    isPlaceholder: true,
+  },
+  {
+    label: "Behance",
+    type: "social",
+    href: "#contact",
+    icon: "behance",
+    isPrimary: false,
+    isPlaceholder: true,
+  },
+];
 
 export const siteFooter = {
   copyright:

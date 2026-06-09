@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Download } from "lucide-react";
-import { contactCTA } from "@/content/homepage";
+import { contactCTA, contactLinks, type ContactLink } from "@/content/homepage";
+import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
 import { useIsClient } from "@/lib/useIsClient";
 
 export default function ContactCTA() {
@@ -15,6 +15,18 @@ export default function ContactCTA() {
     transition: { duration: 0.42, ease: "easeOut", delay },
   });
 
+  const primary = contactLinks.filter((l) => l.isPrimary);
+  const secondary = contactLinks.filter((l) => !l.isPrimary);
+
+  // Primary button tiers: email = solid, cv = ghost, the rest = glass.
+  const primaryClass = (link: ContactLink) => {
+    if (link.type === "email")
+      return "bg-[#3DBA8C] text-[#0B1220] hover:bg-[#35a87d] focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]";
+    if (link.type === "cv")
+      return "text-[#94A3B8] hover:text-[#E8EDF2]";
+    return "glass glass-hover text-[#E8EDF2]";
+  };
+
   return (
     <section
       id="contact"
@@ -26,7 +38,6 @@ export default function ContactCTA() {
           {...reveal(0)}
           className="relative glass rounded-3xl border border-white/[0.10] overflow-hidden"
         >
-          {/* Subtle sage wash from top — keeps the panel feeling like a destination */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#3DBA8C]/[0.06] to-transparent"
@@ -58,39 +69,52 @@ export default function ContactCTA() {
               {contactCTA.body}
             </motion.p>
 
-            {/* CTA buttons */}
+            {/* Primary actions */}
             <motion.div
               {...reveal(0.22)}
               className="flex flex-col sm:flex-row gap-3 mt-2 w-full sm:w-auto"
             >
-              <a
-                href={contactCTA.ctas.email.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#3DBA8C] text-[#0B1220] text-sm font-semibold hover:bg-[#35a87d] transition-colors focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
-              >
-                <Mail size={16} strokeWidth={2} aria-hidden />
-                {contactCTA.ctas.email.label}
-              </a>
+              {primary.map((link) => {
+                const Icon = contactIcons[link.icon];
+                return (
+                  <a
+                    key={link.label}
+                    {...contactAnchorProps(link)}
+                    className={[
+                      "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors",
+                      primaryClass(link),
+                    ].join(" ")}
+                  >
+                    <Icon size={16} strokeWidth={2} aria-hidden />
+                    {link.label}
+                  </a>
+                );
+              })}
+            </motion.div>
 
-              <a
-                href={contactCTA.ctas.linkedin.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl glass glass-hover text-sm font-medium text-[#E8EDF2] transition-colors"
-              >
-                <Linkedin size={16} strokeWidth={2} aria-hidden />
-                {contactCTA.ctas.linkedin.label}
-              </a>
-
-              <a
-                href={contactCTA.ctas.cv.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-medium text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
-              >
-                <Download size={16} strokeWidth={2} aria-hidden />
-                {contactCTA.ctas.cv.label}
-              </a>
+            {/* Secondary social / portfolio links */}
+            <motion.div
+              {...reveal(0.28)}
+              className="flex flex-wrap justify-center gap-2.5 mt-2"
+            >
+              {secondary.map((link) => {
+                const Icon = contactIcons[link.icon];
+                return (
+                  <a
+                    key={link.label}
+                    {...contactAnchorProps(link)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass glass-hover text-sm font-medium text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
+                  >
+                    <Icon size={15} strokeWidth={1.9} aria-hidden />
+                    {link.label}
+                  </a>
+                );
+              })}
             </motion.div>
 
             {/* Location */}
             <motion.div
-              {...reveal(0.3)}
+              {...reveal(0.34)}
               className="inline-flex items-center gap-2 mt-3"
             >
               <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-[#3DBA8C]" />
