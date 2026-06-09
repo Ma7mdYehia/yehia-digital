@@ -1,7 +1,6 @@
 import FloatingNav from "@/components/FloatingNav";
 import HeroSection from "@/components/HeroSection";
-import ProofStrip from "@/components/ProofStrip";
-import AboutSnapshot from "@/components/AboutSnapshot";
+import WhoIAmSection from "@/components/WhoIAmSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
@@ -18,14 +17,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
 
-        {/* Divider */}
-        <div className="px-6 lg:pl-24 lg:pr-16">
-          <div className="max-w-6xl mx-auto h-px bg-white/[0.06]" />
-        </div>
-
-        <ProofStrip />
-
-        <AboutSnapshot />
+        <WhoIAmSection />
         <CapabilitiesSection />
         <ToolsSection />
         <SelectedWorkSection />

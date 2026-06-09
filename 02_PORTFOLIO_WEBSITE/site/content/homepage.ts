@@ -57,6 +57,53 @@ export const about = {
   },
 };
 
+/* -------------------------------------------------------------------------- */
+/*  Who I am — merged editorial intro + selected results                       */
+/* -------------------------------------------------------------------------- */
+
+export interface TextSegment {
+  text: string;
+  accent?: boolean;
+}
+
+export interface ResultCard {
+  value: string;
+  label: string;
+}
+
+export const whoIAm = {
+  label: "Who I am",
+  // Large left-side display heading; the middle line is accented.
+  headingLines: ["Build", "Growth", "Systems"] as const,
+  accentLineIndex: 1,
+  // Approved about copy, split for readability with a few accented phrases.
+  introParagraphs: [
+    [
+      { text: "I'm Mohamed Yehia, a " },
+      { text: "growth, e-commerce, and business-systems leader", accent: true },
+      { text: " with 15+ years across the " },
+      { text: "UAE, KSA, and Egypt", accent: true },
+      { text: "." },
+    ],
+    [
+      {
+        text:
+          "I've launched e-commerce channels, grown revenue for B2B and consumer brands, run ERP implementations, and co-founded businesses of my own — connecting ",
+      },
+      { text: "strategy, execution, and results", accent: true },
+      { text: "." },
+    ],
+  ] as TextSegment[][],
+  resultsLabel: "Selected results",
+  resultCards: [
+    { value: "~USD 2.5M", label: "Revenue across food industry" },
+    { value: "~USD 2.5M", label: "Revenue across education ventures" },
+    { value: "~USD 1.7M", label: "Revenue across healthcare" },
+    { value: "+250M", label: "Organic reach across platforms" },
+    { value: "+5M", label: "Followers across platforms" },
+  ] as ResultCard[],
+};
+
 export const capabilities = [
   {
     id: "growth",
