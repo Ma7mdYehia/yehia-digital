@@ -41,10 +41,59 @@ export const proofMetrics = [
   },
 ];
 
+export const about = {
+  heading: "I build growth systems, not just campaigns.",
+  body: "I'm Mohamed Yehia, a growth, e-commerce, and business-systems leader with 15+ years across the UAE, KSA, and Egypt. I've launched e-commerce channels, grown revenue for B2B and consumer brands, run ERP implementations, and co-founded businesses of my own — connecting strategy, execution, and results.",
+  cta: { label: "Read my story", href: "#experience" },
+  credential: {
+    role: "Group Marketing & Digital Growth Lead",
+    markets: "UAE · KSA · Egypt",
+    focus: ["Growth", "E-commerce", "Business Systems", "AI"],
+    languages: [
+      { lang: "Arabic", level: "Native" },
+      { lang: "English", level: "Professional" },
+    ],
+  },
+};
+
+export const capabilities = [
+  {
+    id: "growth",
+    title: "Growth & Performance",
+    body: "Acquisition and conversion across Meta, Google, and TikTok, paired with organic and email — focused on ROAS, CAC, repeat rate, and revenue. Growth that holds up against the numbers, not reach for its own sake.",
+    tags: ["Meta", "Google", "TikTok", "Organic"],
+    icon: "growth",
+  },
+  {
+    id: "ecommerce",
+    title: "E-commerce & Business Systems",
+    body: "Online stores and the operations behind them — WooCommerce, ZID, and Salla storefronts, marketplaces, and the ERP and reporting workflows that keep them coordinated. I led El Shohail's first full Odoo ERP implementation.",
+    tags: ["WooCommerce", "ZID", "Salla", "Odoo"],
+    icon: "ecommerce",
+  },
+  {
+    id: "ai",
+    title: "AI-Augmented Operations",
+    body: "I work with modern AI tools — Claude, ChatGPT, ManyChat — to move faster and more consistently: drafting and iterating creative, prototyping dashboards and reports, and building reusable workflow templates teams can adopt.",
+    tags: ["Claude", "ChatGPT", "ManyChat", "Reporting"],
+    icon: "ai",
+  },
+];
+
+export const tools = [
+  { name: "GA4", use: "Measuring traffic, conversions, and funnel performance." },
+  { name: "Google Tag Manager", use: "Managing tracking and events without code bottlenecks." },
+  { name: "Looker Studio", use: "Turning marketing and sales data into management dashboards." },
+  { name: "Meta Ads Manager", use: "Running and scaling paid acquisition on Meta." },
+  { name: "Google Ads", use: "Search and shopping campaigns for high-intent demand." },
+  { name: "WooCommerce", use: "Building and running direct-to-consumer online stores." },
+  { name: "Odoo", use: "ERP for sales, inventory, and operations." },
+  { name: "Claude", use: "AI-assisted strategy, copy, reporting, and workflow building." },
+  { name: "ClickUp", use: "Running sprints, roadmaps, and cross-team delivery." },
+  { name: "Canva", use: "Fast on-brand creative for campaigns and social." },
+];
+
 export const placeholderSections = [
-  { id: "about", label: "About Snapshot" },
-  { id: "what-i-do", label: "What I Do" },
-  { id: "tools", label: "Tools Behind My Work" },
   { id: "work", label: "Selected Work" },
   { id: "experience", label: "Professional Journey" },
   { id: "how-i-work", label: "How I Work" },

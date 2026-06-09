@@ -44,6 +44,11 @@ body {
   border-radius: 4px;
 }
 
+/* Hide scrollbar on carousel track */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
