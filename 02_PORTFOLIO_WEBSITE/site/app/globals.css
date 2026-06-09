@@ -88,11 +88,11 @@ body {
   height: min(70vw, 620px);
   background: radial-gradient(
     circle at 50% 45%,
-    rgba(61, 186, 140, 0.30) 0%,
-    rgba(61, 186, 140, 0.14) 32%,
+    rgba(61, 186, 140, 0.24) 0%,
+    rgba(61, 186, 140, 0.11) 32%,
     rgba(61, 186, 140, 0) 68%
   );
-  filter: blur(48px);
+  filter: blur(52px);
   transform: translate3d(
     calc(-50% + var(--mx) * 26px),
     calc(-50% + var(--my) * 26px),
@@ -104,10 +104,10 @@ body {
 .hero-orb__ring {
   width: min(58vw, 480px);
   height: min(58vw, 480px);
-  border: 1px solid rgba(61, 186, 140, 0.18);
+  border: 1px solid rgba(61, 186, 140, 0.14);
   box-shadow:
-    0 0 60px 0 rgba(61, 186, 140, 0.10) inset,
-    0 0 40px 0 rgba(61, 186, 140, 0.06);
+    0 0 60px 0 rgba(61, 186, 140, 0.08) inset,
+    0 0 40px 0 rgba(61, 186, 140, 0.05);
   filter: blur(0.5px);
   transform: translate3d(
     calc(-50% + var(--mx) * 44px),
