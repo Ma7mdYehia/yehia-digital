@@ -438,7 +438,27 @@ export const journeyItems: JourneyItem[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*  How I Work                                                                 */
+/* -------------------------------------------------------------------------- */
+
+export const howIWork = {
+  eyebrow: "How I work",
+  heading: "A system-first way to build growth.",
+  body: [
+    "My approach has been the same for nearly two decades: build the system, then make it run. It started in 2005 with self-taught web development, and it now shows up as marketing engines, e-commerce operations, and ERP-led workflows that connect strategy to execution.",
+    "Today that includes working with AI as a daily tool — Claude and ChatGPT to draft and iterate faster, prototyping dashboards and reporting for clearer management visibility, and reusable templates so teams execute more consistently. I track delivery in ClickUp and build in the open on GitHub.",
+    "This site itself is being built that way: AI-assisted and version-tracked — a small example of how I prefer to work.",
+  ],
+  model: [
+    { id: "strategy", title: "Strategy", phrase: "Define the business direction." },
+    { id: "execution", title: "Execution", phrase: "Turn plans into campaigns and workflows." },
+    { id: "systems", title: "Systems", phrase: "Connect e-commerce, ERP, teams, and content." },
+    { id: "visibility", title: "Visibility", phrase: "Track performance with reporting and dashboards." },
+  ],
+  badges: ["AI-assisted", "GitHub-tracked", "ClickUp-managed", "Reporting-led"],
+};
+
 export const placeholderSections = [
-  { id: "how-i-work", label: "How I Work" },
   { id: "contact", label: "Contact" },
 ];

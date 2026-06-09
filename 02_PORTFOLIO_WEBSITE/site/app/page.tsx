@@ -6,6 +6,7 @@ import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
+import HowIWorkSection from "@/components/HowIWorkSection";
 import SectionPlaceholder from "@/components/SectionPlaceholder";
 import { placeholderSections } from "@/content/homepage";
 
@@ -29,6 +30,7 @@ export default function HomePage() {
         <ToolsSection />
         <SelectedWorkSection />
         <ProfessionalJourney />
+        <HowIWorkSection />
 
         {placeholderSections.map((s) => (
           <SectionPlaceholder key={s.id} id={s.id} label={s.label} />
