@@ -4,6 +4,7 @@ import WhoIAmSection from "@/components/WhoIAmSection";
 import WhatIDoOperatingPanel from "@/components/WhatIDoOperatingPanel";
 import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
+import ProofVoicesSection from "@/components/ProofVoicesSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
 import HowIWorkSection from "@/components/HowIWorkSection";
 import ContactCTA from "@/components/ContactCTA";
@@ -21,6 +22,7 @@ export default function HomePage() {
         <WhatIDoOperatingPanel />
         <ToolsSection />
         <SelectedWorkSection />
+        <ProofVoicesSection />
         <ProfessionalJourney />
         <HowIWorkSection />
         <ContactCTA />

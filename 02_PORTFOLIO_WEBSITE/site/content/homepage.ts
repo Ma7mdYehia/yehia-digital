@@ -163,6 +163,60 @@ export const whatIDo = {
   ],
 };
 
+/* -------------------------------------------------------------------------- */
+/*  Proof & Voices — client voices (pending verified quotes) + project proof   */
+/* -------------------------------------------------------------------------- */
+
+export interface ProofVoice {
+  sector: string;
+  status: string;
+  text: string;
+  project: string;
+  /** Brand/project monogram — not a person. */
+  initials: string;
+}
+
+export const proofVoices = {
+  label: "Proof",
+  heading: "Client voices and project proof.",
+  subtitle:
+    "A compact view of the people, sectors, and project types behind the work — with verified feedback added only when approved.",
+  voices: [
+    {
+      sector: "Food & FMCG",
+      status: "Verified quote pending",
+      text: "Client feedback will be added here after approval.",
+      project: "HÄLSA Bake / Al Shohail Food Industries",
+      initials: "HB",
+    },
+    {
+      sector: "B2B / Manufacturing",
+      status: "Verified quote pending",
+      text: "Client feedback will be added here after approval.",
+      project: "El Shohail Trading",
+      initials: "ES",
+    },
+    {
+      sector: "Healthcare",
+      status: "Verified quote pending",
+      text: "Client feedback will be added here after approval.",
+      project: "Healthcare growth projects",
+      initials: "HC",
+    },
+  ] as ProofVoice[],
+  projectOverviewLabel: "Project overview",
+  projectOverview: [
+    "Food & FMCG",
+    "B2B / Manufacturing",
+    "Education",
+    "Healthcare",
+    "Agencies & Digital Products",
+    "Mobile Apps",
+    "E-commerce",
+    "AI Operations",
+  ],
+};
+
 export const tools = [
   { name: "GA4", use: "Measuring traffic, conversions, and funnel performance." },
   { name: "Google Tag Manager", use: "Managing tracking and events without code bottlenecks." },
