@@ -19,20 +19,21 @@ export default function HeroSection() {
       <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
 
         {/* Left — text content */}
-        <div className="flex flex-col gap-7 order-2 lg:order-1">
+        <div className="flex flex-col gap-6 order-1">
 
-          {/* Credibility tags */}
-          <motion.p
+          {/* Eyebrow */}
+          <motion.div
             {...fadeUp(0.05)}
-            className="text-xs text-[#94A3B8] tracking-wider font-medium"
+            className="inline-flex items-center gap-2 self-start text-xs font-medium text-[#94A3B8] tracking-wide"
           >
-            {hero.credibilityLine}
-          </motion.p>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3DBA8C]" />
+            Based between Ajman, UAE &amp; Cairo, Egypt
+          </motion.div>
 
           {/* Name */}
           <motion.h1
             {...fadeUp(0.12)}
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#E8EDF2] leading-tight tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-[#E8EDF2] leading-[1.05] tracking-tight"
           >
             {hero.name}
           </motion.h1>
@@ -54,7 +55,7 @@ export default function HeroSection() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3">
+          <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 mt-1">
             <a
               href={hero.ctas.primary.href}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#3DBA8C] text-[#0B1220] text-sm font-semibold hover:bg-[#35a87d] transition-colors focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
@@ -68,52 +69,66 @@ export default function HeroSection() {
               {hero.ctas.secondary.label}
             </a>
           </motion.div>
+
+          {/* Credibility line — quiet supporting footer */}
+          <motion.p
+            {...fadeUp(0.4)}
+            className="text-xs text-[#94A3B8]/60 tracking-wide pt-5 mt-1 border-t border-white/[0.06] max-w-xl leading-relaxed"
+          >
+            {hero.credibilityLine}
+          </motion.p>
         </div>
 
-        {/* Right — hero visual */}
+        {/* Right — executive identity card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-          className="order-1 lg:order-2 flex justify-center lg:justify-end"
+          className="order-2 flex justify-center lg:justify-end w-full"
         >
-          <div className="relative">
-            {/* Placeholder headshot frame */}
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl glass border border-white/[0.12] flex items-center justify-center overflow-hidden">
-              {/* Frosted placeholder interior */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent" />
-              <div className="relative flex flex-col items-center gap-3 text-[#94A3B8]">
-                {/* Avatar placeholder */}
-                <div className="w-20 h-20 rounded-full bg-white/[0.06] border border-white/[0.10] flex items-center justify-center">
-                  <span className="text-2xl font-semibold text-[#3DBA8C]/60 select-none">MY</span>
-                </div>
-                <span className="text-xs text-[#94A3B8]/60">Photo coming soon</span>
+          <div className="relative w-full max-w-[300px] sm:max-w-[320px]">
+            <div className="glass rounded-3xl border border-white/[0.12] p-7 flex flex-col items-center text-center overflow-hidden">
+              {/* Subtle top sheen */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/[0.05] to-transparent" />
+
+              {/* Monogram */}
+              <div className="relative w-24 h-24 rounded-full border border-[#3DBA8C]/25 bg-[#3DBA8C]/[0.06] flex items-center justify-center">
+                <span className="text-3xl font-semibold tracking-tight text-[#3DBA8C] select-none">
+                  MY
+                </span>
+              </div>
+
+              {/* Name + role */}
+              <p className="relative mt-5 text-base font-semibold text-[#E8EDF2]">
+                {hero.name}
+              </p>
+              <p className="relative mt-1 text-xs text-[#94A3B8] leading-relaxed px-2">
+                Growth Marketing, E-commerce &amp; AI Transformation
+              </p>
+
+              {/* Divider */}
+              <div className="relative my-5 h-px w-full bg-white/[0.08]" />
+
+              {/* Role tags */}
+              <div className="relative flex flex-wrap justify-center gap-2">
+                {["Growth", "E-commerce", "AI-Augmented Operations"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-medium text-[#94A3B8] bg-white/[0.04] border border-white/[0.08] rounded-full px-2.5 py-1"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Status chip */}
+              <div className="relative mt-5 inline-flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3DBA8C] animate-none" />
+                <span className="text-xs font-medium text-[#3DBA8C]">
+                  {hero.statusChip}
+                </span>
               </div>
             </div>
-
-            {/* Status chip */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.4 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap"
-            >
-              <span className="glass px-3 py-1.5 rounded-full text-xs font-medium text-[#3DBA8C] border border-[#3DBA8C]/25">
-                {hero.statusChip}
-              </span>
-            </motion.div>
-
-            {/* Profile summary card — top right */}
-            <motion.div
-              initial={{ opacity: 0, x: 8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35, delay: 0.45 }}
-              className="absolute -top-4 -right-4 lg:-right-8"
-            >
-              <div className="glass px-3 py-2 rounded-xl border border-white/[0.10] max-w-[180px]">
-                <p className="text-[10px] text-[#94A3B8] leading-relaxed">{hero.profileSummary}</p>
-              </div>
-            </motion.div>
           </div>
         </motion.div>
 

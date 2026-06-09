@@ -93,8 +93,253 @@ export const tools = [
   { name: "Canva", use: "Fast on-brand creative for campaigns and social." },
 ];
 
+export type WorkCategory =
+  | "all"
+  | "featured"
+  | "b2b"
+  | "fmcg"
+  | "education"
+  | "healthcare"
+  | "mobile"
+  | "agency";
+
+export type WorkVisual =
+  | "bakery"
+  | "machinery"
+  | "manufacturing"
+  | "education"
+  | "agency"
+  | "export"
+  | "healthcare"
+  | "healthcare-placeholder"
+  | "iumak";
+
+export interface WorkItem {
+  id: string;
+  title: string;
+  category: Exclude<WorkCategory, "all" | "featured">;
+  /** Extra filter memberships beyond the primary category. */
+  filters?: WorkCategory[];
+  featured: boolean;
+  tags: string;
+  metric?: string;
+  line: string;
+  visual: WorkVisual;
+  /** Healthcare-specific structured fields */
+  specialty?: string;
+  doctorTitle?: string;
+  services?: string[];
+  mediaSlot?: string;
+  /** Placeholder slots reserved for future named clients. */
+  isPlaceholder?: boolean;
+}
+
+export const workFilters: { id: WorkCategory; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "featured", label: "Featured" },
+  { id: "b2b", label: "B2B / Manufacturing" },
+  { id: "fmcg", label: "Food & FMCG" },
+  { id: "education", label: "Education" },
+  { id: "healthcare", label: "Healthcare" },
+  { id: "mobile", label: "Mobile Apps" },
+  { id: "agency", label: "Agencies & Digital Products" },
+];
+
+export const workIntro =
+  "Proof across sectors and markets — from B2B trade and FMCG to education, healthcare, mobile apps, and agency client campaigns.";
+
+export const workItems: WorkItem[] = [
+  {
+    id: "halsa",
+    title: "HÄLSA Bake",
+    category: "fmcg",
+    featured: true,
+    tags: "FOOD & FMCG · UAE · GROWTH + E-COMMERCE",
+    metric: "~1.5M reach/mo",
+    line: "Clean-label bakery, baked using natural sourdough fermentation — launched the online store and an organic-led growth engine.",
+    visual: "bakery",
+  },
+  {
+    id: "elshohail",
+    title: "El Shohail Trading",
+    category: "b2b",
+    featured: true,
+    tags: "B2B MACHINERY · KSA · DIGITAL GROWTH",
+    metric: "SAR 7M→10M",
+    line: "B2B food-processing machinery — revenue growth and the company's first full ERP implementation.",
+    visual: "machinery",
+  },
+  {
+    id: "alshohail-food",
+    title: "Al Shohail Food Industries",
+    category: "b2b",
+    featured: true,
+    tags: "FOOD MANUFACTURING · UAE · SYSTEMS + BRAND",
+    line: "Manufacturing arm behind HÄLSA — group marketing, brand, and business-systems support.",
+    visual: "manufacturing",
+  },
+  {
+    id: "ideaeg",
+    title: "IDE / IDEAEG Education Group",
+    category: "education",
+    featured: true,
+    tags: "EDUCATION · EGYPT · FOUNDER STORY",
+    metric: "~EGP 20M",
+    line: "Co-founded and scaled education businesses; secured Apple AATP authorization.",
+    visual: "education",
+  },
+  {
+    id: "pointer",
+    title: "Pointer Advertising",
+    category: "agency",
+    featured: true,
+    tags: "AGENCY · EGYPT · CLIENT CAMPAIGNS",
+    line: "Agency-side delivery across multiple client accounts — performance marketing and content.",
+    visual: "agency",
+  },
+  {
+    id: "csc",
+    title: "CSC Export",
+    category: "b2b",
+    featured: true,
+    tags: "B2B EXPORT · EGYPT / KSA / CHINA",
+    line: "Export-focused digital content and product presentation across international markets.",
+    visual: "export",
+  },
+
+  /* ------------------------------------------------------------- */
+  /*  Healthcare — named clients (details pending)                 */
+  /* ------------------------------------------------------------- */
+  {
+    id: "dr-kareem-sabry",
+    title: "Dr Kareem Sabry",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Healthcare digital growth support across content, paid media, and web presence.",
+    visual: "healthcare",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+  },
+  {
+    id: "dr-osama-el-tih",
+    title: "Dr Osama El Tih",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Healthcare digital growth support across content, paid media, and web presence.",
+    visual: "healthcare",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+  },
+  {
+    id: "dr-hassan-ashour",
+    title: "Dr Hassan Ashour",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Healthcare digital growth support across content, paid media, and web presence.",
+    visual: "healthcare",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+  },
+  {
+    id: "dr-rania-lotfy",
+    title: "Dr Rania Lotfy",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Healthcare digital growth support across content, paid media, and web presence.",
+    visual: "healthcare",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+  },
+
+  /* ------------------------------------------------------------- */
+  /*  Healthcare — reserved placeholder slots for future clients   */
+  /* ------------------------------------------------------------- */
+  {
+    id: "healthcare-05",
+    title: "Healthcare Client 05",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Client details pending",
+    visual: "healthcare-placeholder",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+    isPlaceholder: true,
+  },
+  {
+    id: "healthcare-06",
+    title: "Healthcare Client 06",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Client details pending",
+    visual: "healthcare-placeholder",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+    isPlaceholder: true,
+  },
+  {
+    id: "healthcare-07",
+    title: "Healthcare Client 07",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Client details pending",
+    visual: "healthcare-placeholder",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+    isPlaceholder: true,
+  },
+  {
+    id: "healthcare-08",
+    title: "Healthcare Client 08",
+    category: "healthcare",
+    featured: false,
+    tags: "HEALTHCARE · CONTENT + MEDIA BUYING + WEB DEVELOPMENT",
+    line: "Client details pending",
+    visual: "healthcare-placeholder",
+    specialty: "Pending",
+    doctorTitle: "Pending",
+    services: ["Social Media Content", "Media Buying", "Web Development"],
+    mediaSlot: "Doctor photo or clinic logo pending",
+    isPlaceholder: true,
+  },
+
+  /* ------------------------------------------------------------- */
+  /*  Mobile Apps                                                  */
+  /* ------------------------------------------------------------- */
+  {
+    id: "iumak",
+    title: "IUMAK",
+    category: "mobile",
+    filters: ["mobile", "healthcare"],
+    featured: false,
+    tags: "MEDICAL APP · PHARMACIES · UI/UX + MOBILE APP DEVELOPMENT",
+    line: "Mobile app design and development for a healthcare/pharmacy product.",
+    visual: "iumak",
+    services: ["Mobile App Design", "Mobile App Development"],
+  },
+];
+
 export const placeholderSections = [
-  { id: "work", label: "Selected Work" },
   { id: "experience", label: "Professional Journey" },
   { id: "how-i-work", label: "How I Work" },
   { id: "contact", label: "Contact" },

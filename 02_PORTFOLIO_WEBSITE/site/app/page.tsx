@@ -4,6 +4,7 @@ import ProofStrip from "@/components/ProofStrip";
 import AboutSnapshot from "@/components/AboutSnapshot";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import ToolsSection from "@/components/ToolsSection";
+import SelectedWorkSection from "@/components/SelectedWorkSection";
 import SectionPlaceholder from "@/components/SectionPlaceholder";
 import { placeholderSections } from "@/content/homepage";
 
@@ -25,6 +26,7 @@ export default function HomePage() {
         <AboutSnapshot />
         <CapabilitiesSection />
         <ToolsSection />
+        <SelectedWorkSection />
 
         {placeholderSections.map((s) => (
           <SectionPlaceholder key={s.id} id={s.id} label={s.label} />

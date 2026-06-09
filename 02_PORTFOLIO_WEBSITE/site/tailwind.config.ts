@@ -8,14 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        base: "#0B1220",
-        surface: "#0F1724",
-        accent: "#3DBA8C",
-        amber: "#E0A458",
-        "text-primary": "#E8EDF2",
-        "text-secondary": "#94A3B8",
-      },
+      // Brand palette is applied via arbitrary values (e.g. text-[#E8EDF2])
+      // and CSS custom properties in globals.css. Named color keys are
+      // intentionally omitted: a key named "base" would collide with the
+      // built-in `.text-base` font-size utility.
       fontFamily: {
         sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],
       },
