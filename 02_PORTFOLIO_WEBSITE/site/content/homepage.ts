@@ -128,6 +128,41 @@ export const capabilities = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*  What I do — single operating panel                                         */
+/* -------------------------------------------------------------------------- */
+
+export interface CapabilityPoint {
+  text: string;
+  icon: "acquisition" | "ecommerce" | "erp" | "content" | "dashboard" | "ai";
+}
+
+export const whatIDo = {
+  label: "What I do",
+  heading: "Three areas. One operating model.",
+  intro:
+    "I connect growth, e-commerce, and AI-assisted operations into systems that teams can actually run.",
+  summaryTitle: "Growth systems that connect strategy to execution.",
+  summaryBody:
+    "I combine acquisition, e-commerce operations, ERP workflows, reporting, and AI-assisted execution into one operating model — focused on measurable growth, not activity for its own sake.",
+  modes: [
+    { id: "growth", label: "Growth Engine", caption: "Acquisition, conversion, and revenue." },
+    { id: "system", label: "Operating System", caption: "E-commerce, ERP, reporting, and AI." },
+  ],
+  points: [
+    { text: "Build acquisition systems", icon: "acquisition" },
+    { text: "Optimize e-commerce journeys", icon: "ecommerce" },
+    { text: "Connect ERP and reporting workflows", icon: "erp" },
+    { text: "Turn content into repeatable campaigns", icon: "content" },
+    { text: "Prototype dashboards for management visibility", icon: "dashboard" },
+    { text: "Use AI to speed up execution", icon: "ai" },
+  ] as CapabilityPoint[],
+  tags: [
+    "Meta", "Google", "TikTok", "WooCommerce", "ZID",
+    "Salla", "Odoo", "Claude", "ChatGPT", "Reporting",
+  ],
+};
+
 export const tools = [
   { name: "GA4", use: "Measuring traffic, conversions, and funnel performance." },
   { name: "Google Tag Manager", use: "Managing tracking and events without code bottlenecks." },

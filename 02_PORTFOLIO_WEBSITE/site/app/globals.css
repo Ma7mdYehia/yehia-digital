@@ -152,6 +152,34 @@ body {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Systems-visual node pulse (What I do panel) — very subtle                  */
+/* -------------------------------------------------------------------------- */
+@keyframes sys-pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.6; }
+}
+@keyframes sys-pulse-ring {
+  0% { opacity: 0.5; transform: scale(0.85); }
+  70%, 100% { opacity: 0; transform: scale(1.6); }
+}
+.sys-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sys-pulse 3.4s ease-in-out infinite;
+}
+.sys-pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sys-pulse-ring 3.4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sys-pulse,
+  .sys-pulse-ring {
+    animation: none;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

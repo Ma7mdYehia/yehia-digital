@@ -1,7 +1,7 @@
 import FloatingNav from "@/components/FloatingNav";
 import HeroSection from "@/components/HeroSection";
 import WhoIAmSection from "@/components/WhoIAmSection";
-import CapabilitiesSection from "@/components/CapabilitiesSection";
+import WhatIDoOperatingPanel from "@/components/WhatIDoOperatingPanel";
 import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
@@ -18,7 +18,7 @@ export default function HomePage() {
         <HeroSection />
 
         <WhoIAmSection />
-        <CapabilitiesSection />
+        <WhatIDoOperatingPanel />
         <ToolsSection />
         <SelectedWorkSection />
         <ProfessionalJourney />
