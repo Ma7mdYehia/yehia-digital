@@ -339,8 +339,106 @@ export const workItems: WorkItem[] = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*  Professional Journey                                                       */
+/* -------------------------------------------------------------------------- */
+
+export interface JourneyItem {
+  id: string;
+  years: string;
+  role: string;
+  company: string;
+  market?: string;
+  achievement: string;
+  /** Current ongoing roles get a small accent chip. */
+  current?: boolean;
+  /** True for the umbrella group role — Al-Shehail Group. */
+  isGroup?: boolean;
+  /** Reference to the umbrella group (for nested current roles). */
+  underGroup?: string;
+}
+
+export const journeyEyebrow = "Journey";
+export const journeyHeading =
+  "From self-taught builder to group growth lead.";
+export const journeyIntro =
+  "Nearly two decades across the UAE, KSA, and Egypt — building marketing engines, e-commerce operations, and business systems that connect strategy to execution.";
+export const journeyNote =
+  "Current Al-Shehail roles operate in parallel under one group context.";
+
+export const journeyItems: JourneyItem[] = [
+  {
+    id: "micro4host",
+    years: "2005–2009",
+    role: "Co-Founder & Digital Builder",
+    company: "Micro4Host",
+    market: "Egypt",
+    achievement:
+      "Self-taught web development: built and grew community websites and early online audiences.",
+  },
+  {
+    id: "eid-labib",
+    years: "2009–2013",
+    role: "Digital Marketing Executive",
+    company: "Eid Labib Group (HyperPlus, Tajerinn)",
+    market: "Egypt",
+    achievement:
+      "Retail and e-commerce content, promotions, and early SEO across HyperPlus and Tajerinn.",
+  },
+  {
+    id: "ideaeg",
+    years: "2014–2020",
+    role: "Co-Founder & Head of Growth",
+    company: "IDEAEG Education Group",
+    market: "Egypt",
+    achievement:
+      "Scaled education ventures to ~EGP 20M and a 250K+ community; secured Apple AATP authorization.",
+  },
+  {
+    id: "pointer",
+    years: "2016–2020",
+    role: "Digital Marketing Manager",
+    company: "Pointer Advertising",
+    market: "Egypt",
+    achievement:
+      "Led agency delivery across multiple client accounts, alongside IDEAEG.",
+  },
+  {
+    id: "alshehail-group",
+    years: "2021–present",
+    role: "Group Marketing & Digital Growth Lead",
+    company: "Al-Shehail Group",
+    market: "UAE · KSA · Egypt",
+    achievement:
+      "Cross-brand growth, digital, and business-systems leadership across UAE, KSA, and Egypt.",
+    current: true,
+    isGroup: true,
+  },
+  {
+    id: "elshohail",
+    years: "2021–present",
+    role: "Marketing & Business Operations Lead",
+    company: "El Shohail Trading",
+    market: "KSA",
+    achievement:
+      "Grew revenue ~SAR 7M→10M in year one; led the first full Odoo ERP implementation.",
+    current: true,
+    underGroup: "Al-Shehail Group",
+  },
+  {
+    id: "halsa-bake",
+    years: "2024–present",
+    role: "Marketing & E-commerce Growth Manager",
+    company: "HÄLSA Bake",
+    market: "UAE",
+    achievement:
+      "Launched the e-commerce channel and built an organic-led growth engine (~1.5M reach/month).",
+    current: true,
+    underGroup: "Al-Shehail Group",
+  },
+];
+
 export const placeholderSections = [
-  { id: "experience", label: "Professional Journey" },
   { id: "how-i-work", label: "How I Work" },
   { id: "contact", label: "Contact" },
 ];
