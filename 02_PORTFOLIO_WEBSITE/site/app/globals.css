@@ -20,9 +20,18 @@ html {
 body {
   background-color: var(--color-base);
   color: var(--color-text-primary);
-  font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
+  font-family: var(--font-inter), var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display + handwritten type */
+.font-display {
+  font-family: var(--font-bebas), "Arial Narrow", system-ui, sans-serif;
+  font-weight: 400;
+}
+.font-hand {
+  font-family: var(--font-caveat), ui-rounded, cursive;
 }
 
 /* Glass panel utility */
@@ -47,6 +56,100 @@ body {
 /* Hide scrollbar on carousel track */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Interactive hero orb                                                       */
+/*  Layered radial glows that parallax with the pointer via --mx / --my.       */
+/*  Restrained sage glow over the dark base — not neon.                        */
+/* -------------------------------------------------------------------------- */
+.hero-orb {
+  --mx: 0;
+  --my: 0;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-orb__layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 9999px;
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+/* Main sage core — soft, heavily blurred */
+.hero-orb__core {
+  width: min(70vw, 620px);
+  height: min(70vw, 620px);
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(61, 186, 140, 0.30) 0%,
+    rgba(61, 186, 140, 0.14) 32%,
+    rgba(61, 186, 140, 0) 68%
+  );
+  filter: blur(48px);
+  transform: translate3d(
+    calc(-50% + var(--mx) * 26px),
+    calc(-50% + var(--my) * 26px),
+    0
+  );
+}
+
+/* Defined ring — gives the orb structure */
+.hero-orb__ring {
+  width: min(58vw, 480px);
+  height: min(58vw, 480px);
+  border: 1px solid rgba(61, 186, 140, 0.18);
+  box-shadow:
+    0 0 60px 0 rgba(61, 186, 140, 0.10) inset,
+    0 0 40px 0 rgba(61, 186, 140, 0.06);
+  filter: blur(0.5px);
+  transform: translate3d(
+    calc(-50% + var(--mx) * 44px),
+    calc(-50% + var(--my) * 44px),
+    0
+  );
+}
+
+/* Faint amber ambient highlight — depth, offset */
+.hero-orb__ambient {
+  width: min(50vw, 420px);
+  height: min(50vw, 420px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(224, 164, 88, 0.10) 0%,
+    rgba(224, 164, 88, 0) 70%
+  );
+  filter: blur(60px);
+  transform: translate3d(
+    calc(-50% + 80px + var(--mx) * 16px),
+    calc(-50% - 60px + var(--my) * 16px),
+    0
+  );
+}
+
+/* Vignette to keep edges premium and text legible */
+.hero-orb__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 90% at 50% 40%,
+    rgba(11, 18, 32, 0) 40%,
+    rgba(11, 18, 32, 0.55) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb__core,
+  .hero-orb__ring,
+  .hero-orb__ambient {
+    transition: none;
+  }
 }
 
 /* Scrollbar */
