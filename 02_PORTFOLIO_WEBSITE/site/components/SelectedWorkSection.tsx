@@ -378,11 +378,11 @@ function WorkCard({ item }: { item: WorkItem }) {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.32, ease: "easeOut" }}
       className={[
-        "group relative rounded-2xl overflow-hidden bg-[#0F1724] transition-colors duration-300",
+        "group relative rounded-2xl overflow-hidden bg-[#0F1724] transition-all duration-300",
         "border",
         isPlaceholder
           ? "border-white/[0.05] hover:border-white/[0.10]"
-          : "border-white/[0.08] hover:border-white/[0.18]",
+          : "border-white/[0.08] hover:border-[#3DBA8C]/30 hover:-translate-y-0.5",
       ].join(" ")}
       aria-label={isPlaceholder ? `${item.title} — slot reserved` : item.title}
     >
@@ -505,8 +505,8 @@ export default function SelectedWorkSection() {
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
 
         {/* Header */}
-        <div className="flex flex-col gap-3">
-          <motion.p {...reveal(0)} className="text-xs text-[#3DBA8C] tracking-widest uppercase font-medium">
+        <div className="flex flex-col gap-3 max-w-2xl">
+          <motion.p {...reveal(0)} className="text-xs text-[#3DBA8C] tracking-[0.22em] uppercase font-medium">
             Selected work
           </motion.p>
           <motion.h2
@@ -515,37 +515,42 @@ export default function SelectedWorkSection() {
           >
             Proof across sectors and markets.
           </motion.h2>
-          <motion.p {...reveal(0.12)} className="text-base text-[#94A3B8] leading-relaxed max-w-xl">
+          <motion.p {...reveal(0.12)} className="text-base sm:text-lg text-[#94A3B8] leading-relaxed">
             {workIntro}
           </motion.p>
         </div>
 
-        {/* Filter menu */}
+        {/* Filter bar — subtle panel strip / segmented control */}
         <motion.div
           {...reveal(0.18)}
-          role="tablist"
-          aria-label="Filter selected work"
-          className="flex flex-wrap gap-2"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-2 sm:p-2.5"
         >
-          {workFilters.map((f) => {
-            const isActive = active === f.id;
-            return (
-              <button
-                key={f.id}
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActive(f.id)}
-                className={[
-                  "text-xs sm:text-sm font-medium rounded-full px-3.5 py-1.5 border transition-all duration-200",
-                  isActive
-                    ? "bg-[#3DBA8C]/[0.12] border-[#3DBA8C]/40 text-[#3DBA8C]"
-                    : "bg-white/[0.03] border-white/[0.08] text-[#94A3B8] hover:text-[#E8EDF2] hover:border-white/[0.18]",
-                ].join(" ")}
-              >
-                {f.label}
-              </button>
-            );
-          })}
+          <div
+            role="tablist"
+            aria-label="Filter selected work"
+            className="flex flex-wrap gap-1.5 sm:gap-2"
+          >
+            {workFilters.map((f) => {
+              const isActive = active === f.id;
+              return (
+                <button
+                  key={f.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActive(f.id)}
+                  className={[
+                    "text-xs sm:text-sm font-medium rounded-full px-3.5 py-1.5 border transition-colors duration-200",
+                    "focus-visible:ring-2 focus-visible:ring-[#3DBA8C]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
+                    isActive
+                      ? "bg-[#3DBA8C]/15 border-[#3DBA8C]/45 text-[#3DBA8C]"
+                      : "bg-transparent border-transparent text-[#94A3B8] hover:text-[#E8EDF2] hover:bg-white/[0.04]",
+                  ].join(" ")}
+                >
+                  {f.label}
+                </button>
+              );
+            })}
+          </div>
         </motion.div>
 
         {/* Grid */}
