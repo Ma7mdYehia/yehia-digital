@@ -487,12 +487,25 @@ export interface JourneyItem {
   company: string;
   market?: string;
   achievement: string;
+  /** Short stage label shown on the rail. */
+  category?: string;
+  /** Impact / responsibility points for the details card (existing facts only). */
+  bullets?: string[];
+  /** Focus category tags (descriptive, no claims). */
+  focus?: string[];
   /** Current ongoing roles get a small accent chip. */
   current?: boolean;
   /** True for the umbrella group role — Al-Shehail Group. */
   isGroup?: boolean;
   /** Reference to the umbrella group (for nested current roles). */
   underGroup?: string;
+}
+
+export interface LearningCard {
+  title: string;
+  detail: string;
+  description: string;
+  icon: "university" | "apple" | "hours";
 }
 
 export const journeyEyebrow = "Journey";
@@ -503,6 +516,30 @@ export const journeyIntro =
 export const journeyNote =
   "Current Al-Shehail roles operate in parallel under one group context.";
 
+export const learningCards: LearningCard[] = [
+  {
+    title: "Benha University",
+    detail: "B.Sc. in Business / Commerce",
+    description:
+      "Formal academic foundation supporting the business and marketing journey.",
+    icon: "university",
+  },
+  {
+    title: "Apple — AATP",
+    detail: "iOS App Development",
+    description:
+      "Structured creative and digital learning connected to Apple’s training ecosystem.",
+    icon: "apple",
+  },
+  {
+    title: "2500+ self-learning hours",
+    detail: "Continuous, project-led",
+    description:
+      "Independent learning across design, marketing, e-commerce, AI, systems, and business operations.",
+    icon: "hours",
+  },
+];
+
 export const journeyItems: JourneyItem[] = [
   {
     id: "micro4host",
@@ -510,8 +547,15 @@ export const journeyItems: JourneyItem[] = [
     role: "Co-Founder & Digital Builder",
     company: "Micro4Host",
     market: "Egypt",
+    category: "Self-taught builder",
     achievement:
       "Self-taught web development: built and grew community websites and early online audiences.",
+    bullets: [
+      "Self-taught web development from scratch",
+      "Built and ran community websites",
+      "Grew early online audiences through content",
+    ],
+    focus: ["Web", "Community", "Content"],
   },
   {
     id: "eid-labib",
@@ -519,8 +563,14 @@ export const journeyItems: JourneyItem[] = [
     role: "Digital Marketing Executive",
     company: "Eid Labib Group (HyperPlus, Tajerinn)",
     market: "Egypt",
+    category: "Retail marketing",
     achievement:
       "Retail and e-commerce content, promotions, and early SEO across HyperPlus and Tajerinn.",
+    bullets: [
+      "Retail and e-commerce content and promotions",
+      "Early SEO across HyperPlus and Tajerinn",
+    ],
+    focus: ["Retail", "E-commerce", "SEO"],
   },
   {
     id: "ideaeg",
@@ -528,8 +578,15 @@ export const journeyItems: JourneyItem[] = [
     role: "Co-Founder & Head of Growth",
     company: "IDEAEG Education Group",
     market: "Egypt",
+    category: "Founder · Education",
     achievement:
       "Scaled education ventures to ~EGP 20M and a 250K+ community; secured Apple AATP authorization.",
+    bullets: [
+      "Co-founded and scaled education ventures",
+      "Scaled to ~EGP 20M and a 250K+ community",
+      "Secured Apple AATP authorization",
+    ],
+    focus: ["Education", "Growth", "Founder"],
   },
   {
     id: "pointer",
@@ -537,8 +594,14 @@ export const journeyItems: JourneyItem[] = [
     role: "Digital Marketing Manager",
     company: "Pointer Advertising",
     market: "Egypt",
+    category: "Agency",
     achievement:
       "Led agency delivery across multiple client accounts, alongside IDEAEG.",
+    bullets: [
+      "Led agency delivery across multiple client accounts",
+      "Performance marketing and content for clients",
+    ],
+    focus: ["Agency", "Performance", "Content"],
   },
   {
     id: "alshehail-group",
@@ -546,8 +609,15 @@ export const journeyItems: JourneyItem[] = [
     role: "Group Marketing & Digital Growth Lead",
     company: "Al-Shehail Group",
     market: "UAE · KSA · Egypt",
+    category: "Group growth lead",
     achievement:
       "Cross-brand growth, digital, and business-systems leadership across UAE, KSA, and Egypt.",
+    bullets: [
+      "Cross-brand growth and digital leadership",
+      "Business-systems leadership across UAE · KSA · Egypt",
+      "Websites, e-commerce, and reporting workflows",
+    ],
+    focus: ["Group Growth", "Digital", "Systems"],
     current: true,
     isGroup: true,
   },
@@ -557,8 +627,14 @@ export const journeyItems: JourneyItem[] = [
     role: "Marketing & Business Operations Lead",
     company: "El Shohail Trading",
     market: "KSA",
+    category: "B2B operations",
     achievement:
       "Grew revenue ~SAR 7M→10M in year one; led the first full Odoo ERP implementation.",
+    bullets: [
+      "Grew annual revenue ~SAR 7M→10M in year one",
+      "Led the company’s first full Odoo ERP implementation",
+    ],
+    focus: ["B2B", "Revenue", "ERP"],
     current: true,
     underGroup: "Al-Shehail Group",
   },
@@ -568,8 +644,14 @@ export const journeyItems: JourneyItem[] = [
     role: "Marketing & E-commerce Growth Manager",
     company: "HÄLSA Bake",
     market: "UAE",
+    category: "FMCG growth",
     achievement:
       "Launched the e-commerce channel and built an organic-led growth engine (~1.5M reach/month).",
+    bullets: [
+      "Launched the e-commerce channel",
+      "Built an organic-led growth engine (~1.5M reach/month)",
+    ],
+    focus: ["FMCG", "E-commerce", "Organic"],
     current: true,
     underGroup: "Al-Shehail Group",
   },
