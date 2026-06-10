@@ -149,38 +149,123 @@ export const capabilities = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  What I do — single operating panel                                         */
+/*  What I do — two operating modes (tabs)                                     */
 /* -------------------------------------------------------------------------- */
 
-export interface CapabilityPoint {
-  text: string;
-  icon: "acquisition" | "ecommerce" | "erp" | "content" | "dashboard" | "ai";
+export interface WhatIDoCapability {
+  title: string;
+  body: string;
+}
+
+export interface WhatIDoMode {
+  id: string;
+  label: string;
+  cardTitle: string;
+  cardDescription: string;
+  capabilities: WhatIDoCapability[];
+  tools: string[];
 }
 
 export const whatIDo = {
   label: "What I do",
-  heading: "Three areas. One operating model.",
-  intro:
-    "I connect growth, e-commerce, and AI-assisted operations into systems that teams can actually run.",
-  summaryTitle: "Growth systems that connect strategy to execution.",
-  summaryBody:
-    "I combine acquisition, e-commerce operations, ERP workflows, reporting, and AI-assisted execution into one operating model — focused on measurable growth, not activity for its own sake.",
+  intro: [
+    { text: "I combine marketing, creative execution, business systems, and " },
+    { text: "AI-powered operations", accent: true },
+    { text: " to help companies grow with clarity — from " },
+    { text: "first digital steps", accent: true },
+    { text: " to " },
+    { text: "executive-level visibility", accent: true },
+    { text: "." },
+  ] as TextSegment[],
+  badge: "AI-powered growth & business operations",
   modes: [
-    { id: "growth", label: "Growth Engine", caption: "Acquisition, conversion, and revenue." },
-    { id: "system", label: "Operating System", caption: "E-commerce, ERP, reporting, and AI." },
-  ],
-  points: [
-    { text: "Build acquisition systems", icon: "acquisition" },
-    { text: "Optimize e-commerce journeys", icon: "ecommerce" },
-    { text: "Connect ERP and reporting workflows", icon: "erp" },
-    { text: "Turn content into repeatable campaigns", icon: "content" },
-    { text: "Prototype dashboards for management visibility", icon: "dashboard" },
-    { text: "Use AI to speed up execution", icon: "ai" },
-  ] as CapabilityPoint[],
-  tags: [
-    "Meta", "Google", "TikTok", "WooCommerce", "ZID",
-    "Salla", "Odoo", "Claude", "ChatGPT", "Reporting",
-  ],
+    {
+      id: "growth",
+      label: "Marketing & Digital Growth",
+      cardTitle: "Build growth engines that turn attention into revenue.",
+      cardDescription:
+        "I help brands move from scattered marketing activity into structured growth systems — combining performance marketing, content direction, e-commerce journeys, creative testing, and AI-powered execution to create repeatable demand.",
+      capabilities: [
+        {
+          title: "Build Digital Growth Strategies",
+          body: "Create practical growth plans across paid, organic, content, and e-commerce channels.",
+        },
+        {
+          title: "Run Performance Marketing",
+          body: "Plan and optimize Meta, Google, TikTok, and conversion-focused campaigns.",
+        },
+        {
+          title: "Lead Content & Creative Direction",
+          body: "Turn brand stories into campaigns, visuals, hooks, and content systems.",
+        },
+        {
+          title: "Optimize E-commerce Journeys",
+          body: "Improve product pages, funnels, offers, checkout flow, and customer experience.",
+        },
+        {
+          title: "Build AI-Powered Marketing Workflows",
+          body: "Use AI to speed up research, content production, campaign planning, and reporting.",
+        },
+      ],
+      tools: [
+        "Meta",
+        "Google Ads",
+        "TikTok",
+        "GA4",
+        "Canva",
+        "Adobe",
+        "CapCut",
+        "ChatGPT",
+        "Claude",
+        "Figma",
+      ],
+    },
+    {
+      id: "systems",
+      label: "Business Systems & Executive Ops",
+      cardTitle: "Create the systems leaders need to manage growth.",
+      cardDescription:
+        "I support founders, startups, and traditional businesses by building the operating layer behind growth — dashboards, reporting workflows, websites, e-commerce systems, automation, ERP coordination, and executive visibility for better decisions.",
+      capabilities: [
+        {
+          title: "Build Reporting & Dashboards",
+          body: "Create clear visibility for sales, marketing, revenue, operations, and management decisions.",
+        },
+        {
+          title: "Design Business Workflows",
+          body: "Map daily operations into cleaner processes, ownership, task flow, and follow-up systems.",
+        },
+        {
+          title: "Develop Websites & Digital Platforms",
+          body: "Shape websites, landing pages, e-commerce stores, and digital touchpoints around business goals.",
+        },
+        {
+          title: "Support Apps & Internal Tools",
+          body: "Plan business-facing tools, app concepts, admin flows, and operational interfaces.",
+        },
+        {
+          title: "Guide C-Level Digital Transformation",
+          body: "Help founders and leadership teams understand what to build first, what to automate, and what to measure.",
+        },
+      ],
+      tools: [
+        "Odoo",
+        "Microsoft Dynamics",
+        "Zoho",
+        "ClickUp",
+        "Jira",
+        "WordPress",
+        "Shopify",
+        "Zid",
+        "Salla",
+        "WooCommerce",
+        "n8n",
+        "Apify",
+        "Lovable",
+        "Cursor",
+      ],
+    },
+  ] as WhatIDoMode[],
 };
 
 /* -------------------------------------------------------------------------- */
