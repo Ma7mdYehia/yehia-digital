@@ -1,7 +1,20 @@
 import { siteFooter, contactLinks } from "@/content/homepage";
 import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
 
+const footerOrder = [
+  "LinkedIn",
+  "Instagram",
+  "GitHub",
+  "Behance",
+  "Email me",
+  "Download CV",
+];
+
 export default function SiteFooter() {
+  const orderedLinks = footerOrder
+    .map((label) => contactLinks.find((link) => link.label === label))
+    .filter((link): link is (typeof contactLinks)[number] => Boolean(link));
+
   return (
     <footer
       role="contentinfo"
@@ -15,9 +28,9 @@ export default function SiteFooter() {
         {/* Compact link row */}
         <nav
           aria-label="Footer links"
-          className="order-1 sm:order-2 flex items-center justify-center gap-1.5"
+          className="order-1 sm:order-2 flex flex-wrap items-center justify-center gap-1.5"
         >
-          {contactLinks.map((link) => {
+          {orderedLinks.map((link) => {
             const Icon = contactIcons[link.icon];
             return (
               <a
@@ -32,9 +45,9 @@ export default function SiteFooter() {
           <a
             href="#home"
             aria-label="Back to top"
-            className="ml-1 w-9 h-9 rounded-lg glass glass-hover flex items-center justify-center text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
+            className="ml-3 sm:ml-4 w-11 h-11 rounded-xl border border-[#3DBA8C]/40 bg-[#3DBA8C]/12 flex items-center justify-center text-[#3DBA8C] hover:bg-[#3DBA8C]/20 hover:text-[#D9F7EA] transition-colors shadow-[0_12px_34px_rgba(61,186,140,0.10)]"
           >
-            <span aria-hidden>↑</span>
+            <span aria-hidden className="text-lg leading-none">↑</span>
           </a>
         </nav>
       </div>
