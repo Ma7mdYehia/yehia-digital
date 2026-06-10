@@ -3,189 +3,447 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  workFilters,
-  workItems,
-  workIntro,
-  type WorkCategory,
-  type WorkItem,
-} from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
 
 /* -------------------------------------------------------------------------- */
-/*  Project banner assets                                                     */
+/*  Selected work data                                                         */
 /* -------------------------------------------------------------------------- */
 
-const projectBanners: Record<string, string> = {
-  elshohail: "/images/project-banners/el-shohail.jpeg",
-  "alshohail-food": "/images/project-banners/al-shuhail.jpeg",
-  ideaeg: "/images/project-banners/ide-academy.jpeg",
-  pointer: "/images/project-banners/pointer.jpeg",
-  csc: "/images/project-banners/csc.jpeg",
-  "dr-kareem-sabry": "/images/project-banners/dr.kareemsabry.jpeg",
-  "dr-osama-el-tih": "/images/project-banners/dr.osamaeltih.jpeg",
-  "dr-hassan-ashour": "/images/project-banners/dr.hassanashour.jpeg",
-  "dr-rania-lotfy": "/images/project-banners/dr.rania.jpeg",
-  iumak: "/images/project-banners/iumak.jpeg",
-};
+type WorkCategory =
+  | "all"
+  | "featured"
+  | "b2b"
+  | "fmcg"
+  | "education"
+  | "healthcare"
+  | "other";
 
-function getProjectInitials(title: string) {
-  return title
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
+interface WorkItem {
+  id: string;
+  title: string;
+  category: Exclude<WorkCategory, "all" | "featured">;
+  featured: boolean;
+  image: string;
+  business: string;
+  location: string;
+  year: string;
 }
 
-function ProjectBanner({ item, isPlaceholder }: { item: WorkItem; isPlaceholder: boolean }) {
-  const bannerImage = projectBanners[item.id];
+const workFilters: { id: WorkCategory; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "featured", label: "Featured" },
+  { id: "b2b", label: "B2B / Manufacturing" },
+  { id: "fmcg", label: "Food & FMCG" },
+  { id: "education", label: "Education" },
+  { id: "healthcare", label: "Healthcare" },
+  { id: "other", label: "Other" },
+];
 
-  return (
-    <div
-      className={[
-        "relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#F8FAFC] via-white to-[#E7EDF3]",
-        isPlaceholder ? "opacity-60 grayscale" : "",
-      ].join(" ")}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(61,186,140,0.13),transparent_32%),radial-gradient(circle_at_86%_86%,rgba(15,23,42,0.08),transparent_36%)]" />
+const workIntro =
+  "A curated view of projects across B2B manufacturing, food and FMCG, education, healthcare, and digital growth work.";
 
-      {bannerImage ? (
-        <div className="absolute inset-5 sm:inset-6 transition-transform duration-500 ease-out group-hover:scale-[1.035]">
-          <Image
-            src={bannerImage}
-            alt={`${item.title} project banner`}
-            fill
-            sizes="(min-width: 1024px) 520px, (min-width: 640px) 50vw, 100vw"
-            className="object-contain drop-shadow-[0_16px_32px_rgba(15,23,42,0.14)]"
-          />
-        </div>
-      ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-8 text-center transition-transform duration-500 ease-out group-hover:scale-[1.025]">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#0F1724]/10 bg-white/70 shadow-[0_18px_40px_rgba(15,23,42,0.08)] backdrop-blur-sm">
-            <span className="text-xl font-semibold tracking-tight text-[#0F1724]">
-              {getProjectInitials(item.title)}
-            </span>
-          </div>
-          <p className="max-w-xs text-sm font-semibold leading-snug text-[#0F1724]">
-            {item.title}
-          </p>
-          <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#0F1724]/45">
-            Project cover
-          </span>
-        </div>
-      )}
+const workItems: WorkItem[] = [
+  /* ------------------------------------------------------------------------ */
+  /*  B2B / Manufacturing                                                     */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "al-shuhail-food-industry",
+    title: "Al Shuhail Food Industry",
+    category: "b2b",
+    featured: true,
+    image: "/images/project-banners/al-shuhail.jpeg",
+    business: "Bakery Manufacture",
+    location: "UAE",
+    year: "2024",
+  },
+  {
+    id: "el-shohail-trading",
+    title: "EL Shohail Trading",
+    category: "b2b",
+    featured: true,
+    image: "/images/project-banners/el-shohail.jpeg",
+    business: "Bakery Machinery Trading",
+    location: "Saudi Arabia",
+    year: "2022",
+  },
+  {
+    id: "csc-export-import",
+    title: "CSC Export & Import",
+    category: "b2b",
+    featured: false,
+    image: "/images/project-banners/csc.jpeg",
+    business: "Sourcing & Trading",
+    location: "Egypt",
+    year: "2017",
+  },
+  {
+    id: "zadmak",
+    title: "ZADMAK",
+    category: "b2b",
+    featured: false,
+    image: "/images/project-banners/zadmak.jpeg",
+    business: "Bakery Machinery Manufacture",
+    location: "Egypt",
+    year: "2023",
+  },
+  {
+    id: "zucchilli-forni",
+    title: "Zucchilli Forni",
+    category: "b2b",
+    featured: false,
+    image: "/images/project-banners/zucchilli-forni.jpeg",
+    business: "Bakery Machinery Manufacture",
+    location: "Italy",
+    year: "2023",
+  },
+  {
+    id: "nano-food-machine",
+    title: "Nano Food Machine",
+    category: "b2b",
+    featured: false,
+    image: "/images/project-banners/nano-food-machine.jpeg",
+    business: "Bakery Machinery Trading",
+    location: "Egypt",
+    year: "2021",
+  },
+  {
+    id: "tajerinn",
+    title: "Tajerinn",
+    category: "b2b",
+    featured: false,
+    image: "/images/project-banners/tajerinn.jpeg",
+    business: "Raw Material Trading",
+    location: "Egypt",
+    year: "2012",
+  },
 
-      <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06]" />
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0F1724]/10 to-transparent pointer-events-none" />
-    </div>
-  );
-}
+  /* ------------------------------------------------------------------------ */
+  /*  Food & FMCG                                                              */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "hyper-plus",
+    title: "Hyper Plus",
+    category: "fmcg",
+    featured: false,
+    image: "/images/project-banners/hyperplus.jpeg",
+    business: "Hyper Market",
+    location: "Cairo",
+    year: "2009",
+  },
+  {
+    id: "halsa-bake",
+    title: "Halsa Bake",
+    category: "fmcg",
+    featured: true,
+    image: "/images/project-banners/halsabake.jpeg",
+    business: "Healthy Bakery",
+    location: "UAE",
+    year: "2025",
+  },
+  {
+    id: "fabz",
+    title: "F A B Z",
+    category: "fmcg",
+    featured: false,
+    image: "/images/project-banners/fabz.jpeg",
+    business: "Fashion",
+    location: "Cairo",
+    year: "2018",
+  },
+  {
+    id: "ana-couture",
+    title: "ANA Couture",
+    category: "fmcg",
+    featured: true,
+    image: "/images/project-banners/ana.jpeg",
+    business: "Fashion",
+    location: "Cairo",
+    year: "2026",
+  },
+  {
+    id: "silicon-star",
+    title: "Silicon Star",
+    category: "fmcg",
+    featured: false,
+    image: "/images/project-banners/silicon-star.jpeg",
+    business: "Building Material Trading",
+    location: "Saudi Arabia",
+    year: "2024",
+  },
+  {
+    id: "nano-line-trading",
+    title: "Nano Line Trading",
+    category: "fmcg",
+    featured: false,
+    image: "/images/project-banners/nano-line.jpeg",
+    business: "Kitchen Equipment Trading",
+    location: "UAE",
+    year: "2024",
+  },
+
+  /* ------------------------------------------------------------------------ */
+  /*  Education                                                                */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "ide-academy",
+    title: "IDE Academy",
+    category: "education",
+    featured: true,
+    image: "/images/project-banners/ide-academy.jpeg",
+    business: "Software Education",
+    location: "Egypt",
+    year: "2016",
+  },
+  {
+    id: "atletico-de-madrid-academy",
+    title: "Atletico De Madrid Academy",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/ADMA.jpeg",
+    business: "Sports & Training",
+    location: "Egypt",
+    year: "2018",
+  },
+  {
+    id: "ima-studio",
+    title: "IMA Studio",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/IMA.jpeg",
+    business: "Beauty & Fashion Training",
+    location: "Egypt",
+    year: "2018",
+  },
+  {
+    id: "tech-village-academy",
+    title: "Tech Village Academy",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/techvillage-academy.jpeg",
+    business: "Software Education",
+    location: "Egypt",
+    year: "2015",
+  },
+  {
+    id: "gama-academy",
+    title: "Gama Academy",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/gamaacademy.jpeg",
+    business: "Kids Education",
+    location: "Egypt",
+    year: "2019",
+  },
+  {
+    id: "mehrat",
+    title: "Mehrat",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/mehrat.jpeg",
+    business: "Business & HR Education",
+    location: "Egypt",
+    year: "2015",
+  },
+  {
+    id: "swiss-school-of-management",
+    title: "Swiss School Of Management",
+    category: "education",
+    featured: false,
+    image: "/images/project-banners/ssm.jpeg",
+    business: "Business Education",
+    location: "Egypt",
+    year: "2019",
+  },
+
+  /* ------------------------------------------------------------------------ */
+  /*  Other                                                                    */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "pointer-advertising",
+    title: "Pointer Advertising",
+    category: "other",
+    featured: true,
+    image: "/images/project-banners/pointer.jpeg",
+    business: "Social Media Agency",
+    location: "Egypt",
+    year: "2018",
+  },
+  {
+    id: "el-misk",
+    title: "EL Misk",
+    category: "other",
+    featured: false,
+    image: "/images/project-banners/l-misk.jpeg",
+    business: "Window installation services",
+    location: "Bahrain",
+    year: "2025",
+  },
+  {
+    id: "aqua-door",
+    title: "Aqua Door",
+    category: "other",
+    featured: false,
+    image: "/images/project-banners/aqa-door.jpeg",
+    business: "Window installation services",
+    location: "Egypt",
+    year: "2026",
+  },
+
+  /* ------------------------------------------------------------------------ */
+  /*  Healthcare                                                               */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "dr-talat-al-sammy",
+    title: "Dr. Talat AL Sammy",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.talat.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2017",
+  },
+  {
+    id: "dr-rania-lotfy",
+    title: "Dr. Rania Lotfy",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.rania.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2017",
+  },
+  {
+    id: "dr-hassan-ashour",
+    title: "Dr. Hassan Ashour",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.hassanashour.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+  },
+  {
+    id: "dr-kareem-sabry",
+    title: "Dr. Kareem Sabry",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.kareemsabry.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2014",
+  },
+  {
+    id: "dr-osama-al-tih",
+    title: "Dr. Osama AL Tih",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.osamaeltih.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+  },
+  {
+    id: "dr-mohamed-reda",
+    title: "Dr. Mohamed Reda",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.mohamed-reda.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+  },
+  {
+    id: "al-safwa-center",
+    title: "AL Safwa Center",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/al-safwa-center.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+  },
+  {
+    id: "al-amin-clinics",
+    title: "Al Amin Clinics",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/al-amin-clinic.jpeg",
+    business: "Medical Center",
+    location: "Saudi Arabia",
+    year: "2022",
+  },
+  {
+    id: "iumak",
+    title: "IUMAK",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/iumak.jpeg",
+    business: "Pharma App",
+    location: "Egypt",
+    year: "2020",
+  },
+];
 
 /* -------------------------------------------------------------------------- */
 /*  Card                                                                       */
 /* -------------------------------------------------------------------------- */
 
 function WorkCard({ item }: { item: WorkItem }) {
-  const isHealthcare = item.category === "healthcare";
-  const showStructuredInfo = isHealthcare || item.services;
-  const isPlaceholder = !!item.isPlaceholder;
-  const hasBannerImage = Boolean(projectBanners[item.id]);
-
   return (
     <motion.article
       layout
       initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: isPlaceholder ? 0.72 : 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.32, ease: "easeOut" }}
-      className={[
-        "group relative overflow-hidden rounded-2xl bg-[#0F1724] transition-all duration-300",
-        "border shadow-[0_20px_60px_rgba(0,0,0,0.18)]",
-        isPlaceholder
-          ? "border-white/[0.05] hover:border-white/[0.10]"
-          : "border-white/[0.08] hover:-translate-y-0.5 hover:border-[#3DBA8C]/30",
-      ].join(" ")}
-      aria-label={isPlaceholder ? `${item.title} — slot reserved` : item.title}
+      className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F1724] shadow-[0_20px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3DBA8C]/30"
+      aria-label={item.title}
     >
       {/* Visual area */}
-      <div className="relative overflow-hidden border-b border-white/[0.06]">
-        <ProjectBanner item={item} isPlaceholder={isPlaceholder} />
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/[0.06] bg-[#E7EDF3]">
+        <Image
+          src={item.image}
+          alt={`${item.title} project banner`}
+          fill
+          sizes="(min-width: 1024px) 520px, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+        />
+        <div className="absolute inset-0 ring-1 ring-inset ring-black/[0.06]" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0F1724]/35 to-transparent pointer-events-none" />
 
-        {/* Metric chip — top-right, only when verified */}
-        {item.metric && (
-          <div className="absolute right-4 top-4 z-10">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.12] bg-[#0F1724]/85 px-2.5 py-1 shadow-[0_10px_30px_rgba(15,23,36,0.22)] backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#3DBA8C]" />
-              <span className="whitespace-nowrap text-[11px] font-semibold tracking-wide text-[#D9F7EA]">
-                {item.metric}
-              </span>
+        {/* Year chip */}
+        <div className="absolute right-4 top-4 z-10">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.14] bg-[#0F1724]/85 px-2.5 py-1 shadow-[0_10px_30px_rgba(15,23,36,0.22)] backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#3DBA8C]" />
+            <span className="whitespace-nowrap text-[11px] font-semibold tracking-wide text-[#D9F7EA]">
+              {item.year}
             </span>
-          </div>
-        )}
-
-        {/* Reserved-slot chip for placeholder cards */}
-        {isPlaceholder && (
-          <div className="absolute right-4 top-4 z-10">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.12] bg-[#0F1724]/80 px-2.5 py-1 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#94A3B8]/70" />
-              <span className="whitespace-nowrap text-[10.5px] font-medium tracking-wide text-[#CBD5E1]">
-                Reserved slot
-              </span>
-            </span>
-          </div>
-        )}
+          </span>
+        </div>
       </div>
 
       {/* Content */}
       <div className="relative flex flex-col gap-3 px-6 pb-6 pt-5">
-        <p className="text-[10.5px] font-medium leading-snug tracking-[0.14em] text-[#94A3B8]/80">
-          {item.tags}
+        <p className="text-[10.5px] font-medium uppercase leading-snug tracking-[0.14em] text-[#94A3B8]/80">
+          {item.business} · {item.location}
         </p>
         <h3 className="text-lg font-semibold leading-snug tracking-tight text-[#E8EDF2] sm:text-xl">
           {item.title}
         </h3>
-        <p className="text-sm leading-relaxed text-[#94A3B8]">{item.line}</p>
-
-        {/* Healthcare structured mini-info — compact two-column */}
-        {showStructuredInfo && (item.specialty || item.doctorTitle) && (
-          <div className="mt-1 grid grid-cols-2 gap-3 border-t border-white/[0.06] pt-3">
-            <div className="flex min-w-0 flex-col gap-0.5">
-              <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
-                Specialty
-              </p>
-              <p className="truncate text-xs text-[#94A3B8]">{item.specialty}</p>
-            </div>
-            <div className="flex min-w-0 flex-col gap-0.5">
-              <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
-                Title
-              </p>
-              <p className="truncate text-xs text-[#94A3B8]">{item.doctorTitle}</p>
-            </div>
+        <div className="grid grid-cols-2 gap-3 border-t border-white/[0.06] pt-3">
+          <div className="flex min-w-0 flex-col gap-0.5">
+            <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
+              Business
+            </p>
+            <p className="truncate text-xs text-[#94A3B8]">{item.business}</p>
           </div>
-        )}
-
-        {/* Services strip — small footer tags */}
-        {item.services && item.services.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {item.services.map((service) => (
-              <span
-                key={service}
-                className="rounded-full border border-white/[0.07] bg-white/[0.03] px-2 py-0.5 text-[10.5px] text-[#94A3B8]/70"
-              >
-                {service}
-              </span>
-            ))}
+          <div className="flex min-w-0 flex-col gap-0.5">
+            <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
+              Market
+            </p>
+            <p className="truncate text-xs text-[#94A3B8]">{item.location}</p>
           </div>
-        )}
-
-        {/* Media slot note — only when the real project banner is still missing */}
-        {isHealthcare && item.mediaSlot && !hasBannerImage && (
-          <p className="pt-1 text-[10.5px] italic text-[#94A3B8]/40">
-            {item.mediaSlot}
-          </p>
-        )}
+        </div>
       </div>
     </motion.article>
   );
@@ -202,9 +460,7 @@ export default function SelectedWorkSection() {
   const filtered = useMemo(() => {
     if (active === "all") return workItems;
     if (active === "featured") return workItems.filter((work) => work.featured);
-    return workItems.filter(
-      (work) => work.category === active || work.filters?.includes(active)
-    );
+    return workItems.filter((work) => work.category === active);
   }, [active]);
 
   const reveal = (delay = 0) => ({
@@ -243,7 +499,7 @@ export default function SelectedWorkSection() {
           </motion.p>
         </div>
 
-        {/* Filter bar — subtle panel strip / segmented control */}
+        {/* Filter bar */}
         <motion.div
           {...reveal(0.18)}
           className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-2 sm:p-2.5"
@@ -286,7 +542,6 @@ export default function SelectedWorkSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Empty state — only possible if filters change behaviour later */}
         {filtered.length === 0 && (
           <p className="py-12 text-center text-sm text-[#94A3B8]/60">
             No projects in this category yet.
