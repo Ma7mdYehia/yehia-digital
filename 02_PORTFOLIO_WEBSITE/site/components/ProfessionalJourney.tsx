@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Smartphone, Clock, type LucideIcon } from "lucide-react";
+import { GraduationCap, Smartphone, Clock, Award, type LucideIcon } from "lucide-react";
 import {
   journeyEyebrow,
   journeyHeading,
@@ -19,6 +19,21 @@ const learningIcons: Record<LearningCard["icon"], LucideIcon> = {
   apple: Smartphone,
   hours: Clock,
 };
+
+const compactLearningCards = [
+  {
+    title: "American University of Professional Studies",
+    detail: "Digital Communication & Multimedia",
+  },
+  {
+    title: "Cambridge Training College, Britain",
+    detail: "Professional Marketing Strategist",
+  },
+  {
+    title: "Cairo Chamber of Commerce",
+    detail: "Introduction to Marketing & Customer Care",
+  },
+] as const;
 
 function CurrentChip() {
   return (
@@ -75,28 +90,52 @@ export default function ProfessionalJourney() {
         </div>
 
         {/* Learning / credential cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {learningCards.map((card, i) => {
-            const Icon = learningIcons[card.icon];
-            return (
+        <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {learningCards.map((card, i) => {
+              const Icon = learningIcons[card.icon];
+              return (
+                <motion.div
+                  key={card.title}
+                  {...reveal(0.1 + i * 0.06)}
+                  className="rounded-2xl border border-white/[0.08] bg-[#0F1724] hover:border-white/[0.16] transition-colors duration-200 p-5 flex flex-col gap-3"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex-none w-9 h-9 rounded-lg bg-[#3DBA8C]/[0.08] border border-[#3DBA8C]/20 flex items-center justify-center text-[#3DBA8C]">
+                      <Icon size={16} strokeWidth={1.9} aria-hidden />
+                    </span>
+                    <div className="flex flex-col min-w-0">
+                      <p className="text-sm font-semibold text-[#E8EDF2] leading-snug truncate">{card.title}</p>
+                      <p className="text-[11px] text-[#3DBA8C]/90">{card.detail}</p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#94A3B8] leading-relaxed">{card.description}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {compactLearningCards.map((card, i) => (
               <motion.div
                 key={card.title}
-                {...reveal(0.1 + i * 0.06)}
-                className="rounded-2xl border border-white/[0.08] bg-[#0F1724] hover:border-white/[0.16] transition-colors duration-200 p-5 flex flex-col gap-3"
+                {...reveal(0.22 + i * 0.04)}
+                className="rounded-xl border border-white/[0.07] bg-white/[0.02] hover:border-[#3DBA8C]/25 transition-colors duration-200 px-3.5 py-3 flex items-center gap-3 min-h-[68px]"
               >
-                <div className="flex items-center gap-3">
-                  <span className="flex-none w-9 h-9 rounded-lg bg-[#3DBA8C]/[0.08] border border-[#3DBA8C]/20 flex items-center justify-center text-[#3DBA8C]">
-                    <Icon size={16} strokeWidth={1.9} aria-hidden />
-                  </span>
-                  <div className="flex flex-col min-w-0">
-                    <p className="text-sm font-semibold text-[#E8EDF2] leading-snug truncate">{card.title}</p>
-                    <p className="text-[11px] text-[#3DBA8C]/90">{card.detail}</p>
-                  </div>
+                <span className="flex-none w-7 h-7 rounded-lg bg-[#3DBA8C]/[0.07] border border-[#3DBA8C]/15 flex items-center justify-center text-[#3DBA8C]">
+                  <Award size={13.5} strokeWidth={1.9} aria-hidden />
+                </span>
+                <div className="flex min-w-0 flex-col gap-0.5">
+                  <p className="text-xs font-semibold text-[#E8EDF2] leading-snug line-clamp-2">
+                    {card.title}
+                  </p>
+                  <p className="text-[10.5px] text-[#94A3B8]/80 leading-snug line-clamp-2">
+                    {card.detail}
+                  </p>
                 </div>
-                <p className="text-xs text-[#94A3B8] leading-relaxed">{card.description}</p>
               </motion.div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
         {/* Interactive timeline panel */}
