@@ -8,7 +8,6 @@ import {
   Layers,
   Boxes,
   Briefcase,
-  Quote,
   Route,
   Workflow,
   Mail,
@@ -29,7 +28,7 @@ const navItems = [
   { id: "capabilities", label: "What I do", icon: Layers, href: "#capabilities" },
   { id: "tools", label: "Operating stack", icon: Boxes, href: "#tools" },
   { id: "work", label: "Selected work", icon: Briefcase, href: "#work" },
-  { id: "proof", label: "Proof", icon: Quote, href: "#proof" },
+  // Proof entry hidden while the Proof & Voices section is off the page.
   { id: "experience", label: "My Journey", icon: Route, href: "#experience" },
   { id: "how", label: "How I work", icon: Workflow, href: "#how" },
   { id: "contact", label: "Contact", icon: Mail, href: "#contact" },

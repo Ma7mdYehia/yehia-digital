@@ -296,6 +296,24 @@ export const operatingStackMeta = {
   ],
 };
 
+/* Compact strip presentation — short copy + tiny category labels. */
+export const operatingStackStrip = {
+  eyebrow: "Operating stack",
+  title: "Tools that power the system",
+  line: "A compact stack across growth, creative, AI, commerce, reporting, and business operations.",
+};
+
+/** Tiny category labels shown on strip chips, keyed by category id. */
+export const stackCategoryShortLabels: Record<string, string> = {
+  "growth-analytics": "Growth",
+  "creative-production": "Creative",
+  "video-ai-media": "Video",
+  "ecommerce-web": "Web",
+  "ai-research-automation": "AI",
+  "erp-crm-systems": "ERP",
+  "operations-pm": "Ops",
+};
+
 export const operatingStackCategories: ToolStackCategory[] = [
   {
     id: "growth-analytics",

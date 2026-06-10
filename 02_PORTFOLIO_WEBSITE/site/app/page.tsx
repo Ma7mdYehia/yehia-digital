@@ -4,7 +4,8 @@ import WhoIAmSection from "@/components/WhoIAmSection";
 import WhatIDoOperatingPanel from "@/components/WhatIDoOperatingPanel";
 import OperatingStackSection from "@/components/OperatingStackSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
-import ProofVoicesSection from "@/components/ProofVoicesSection";
+// Proof & Voices is temporarily hidden until verified quotes are approved.
+// import ProofVoicesSection from "@/components/ProofVoicesSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
 import HowIWorkSection from "@/components/HowIWorkSection";
 import ContactCTA from "@/components/ContactCTA";
@@ -22,7 +23,7 @@ export default function HomePage() {
         <WhatIDoOperatingPanel />
         <OperatingStackSection />
         <SelectedWorkSection />
-        <ProofVoicesSection />
+        {/* <ProofVoicesSection /> */}
         <ProfessionalJourney />
         <HowIWorkSection />
         <ContactCTA />
