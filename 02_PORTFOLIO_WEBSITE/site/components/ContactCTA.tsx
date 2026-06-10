@@ -5,6 +5,8 @@ import { contactCTA, contactLinks, type ContactLink } from "@/content/homepage";
 import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
 import { useIsClient } from "@/lib/useIsClient";
 
+const contactLocation = "Based between the UAE & Egypt.";
+
 export default function ContactCTA() {
   const isClient = useIsClient();
 
@@ -16,7 +18,6 @@ export default function ContactCTA() {
   });
 
   const primary = contactLinks.filter((l) => l.isPrimary);
-  const secondary = contactLinks.filter((l) => !l.isPrimary);
 
   // Primary button tiers: email = solid, cv = ghost, the rest = glass.
   const primaryClass = (link: ContactLink) => {
@@ -92,34 +93,14 @@ export default function ContactCTA() {
               })}
             </motion.div>
 
-            {/* Secondary social / portfolio links */}
-            <motion.div
-              {...reveal(0.28)}
-              className="flex flex-wrap justify-center gap-2.5 mt-2"
-            >
-              {secondary.map((link) => {
-                const Icon = contactIcons[link.icon];
-                return (
-                  <a
-                    key={link.label}
-                    {...contactAnchorProps(link)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass glass-hover text-sm font-medium text-[#94A3B8] hover:text-[#E8EDF2] transition-colors"
-                  >
-                    <Icon size={15} strokeWidth={1.9} aria-hidden />
-                    {link.label}
-                  </a>
-                );
-              })}
-            </motion.div>
-
             {/* Location */}
             <motion.div
-              {...reveal(0.34)}
+              {...reveal(0.28)}
               className="inline-flex items-center gap-2 mt-3"
             >
               <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-[#3DBA8C]" />
               <p className="text-xs sm:text-[13px] text-[#94A3B8]/70">
-                {contactCTA.location}
+                {contactLocation}
               </p>
             </motion.div>
 
