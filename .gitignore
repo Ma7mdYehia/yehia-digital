@@ -10,3 +10,4 @@ build/
 .tmp/
 .cache/
 _private/
+.DS_Store
