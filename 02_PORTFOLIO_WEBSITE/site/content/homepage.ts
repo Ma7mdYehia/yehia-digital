@@ -449,51 +449,6 @@ export const proofVoices = {
   ],
 };
 
-export type ToolCategory =
-  | "growth"
-  | "ecommerce"
-  | "reporting"
-  | "ai"
-  | "creative";
-
-export interface Tool {
-  name: string;
-  use: string;
-  category: ToolCategory;
-}
-
-export const tools: Tool[] = [
-  { name: "GA4", use: "Measuring traffic, conversions, and funnel performance.", category: "reporting" },
-  { name: "Google Tag Manager", use: "Managing tracking and events without code bottlenecks.", category: "reporting" },
-  { name: "Looker Studio", use: "Turning marketing and sales data into management dashboards.", category: "reporting" },
-  { name: "Meta Ads Manager", use: "Running and scaling paid acquisition on Meta.", category: "growth" },
-  { name: "Google Ads", use: "Search and shopping campaigns for high-intent demand.", category: "growth" },
-  { name: "WooCommerce", use: "Building and running direct-to-consumer online stores.", category: "ecommerce" },
-  { name: "Odoo", use: "ERP for sales, inventory, and operations.", category: "ecommerce" },
-  { name: "Claude", use: "AI-assisted strategy, copy, reporting, and workflow building.", category: "ai" },
-  { name: "ClickUp", use: "Running sprints, roadmaps, and cross-team delivery.", category: "reporting" },
-  { name: "Canva", use: "Fast on-brand creative for campaigns and social.", category: "creative" },
-];
-
-// Display order + labels for the grouped operating-stack panel.
-export const toolGroups: { id: ToolCategory; label: string }[] = [
-  { id: "growth", label: "Growth channels" },
-  { id: "ecommerce", label: "E-commerce & web" },
-  { id: "reporting", label: "Reporting & operations" },
-  { id: "ai", label: "AI & automation" },
-  { id: "creative", label: "Creative production" },
-];
-
-export const toolsMeta = {
-  label: "Operating stack",
-  heading: "Tools Behind My Work",
-  intro:
-    "The platforms I use to connect strategy, marketing execution, e-commerce, reporting, content systems, and AI-assisted workflows.",
-  panelTitle: "One connected stack, not a tool list.",
-  panelBody:
-    "Each platform plugs into the same operating model — so growth, e-commerce, reporting, and AI-assisted work stay coordinated rather than scattered.",
-};
-
 export type WorkCategory =
   | "all"
   | "featured"

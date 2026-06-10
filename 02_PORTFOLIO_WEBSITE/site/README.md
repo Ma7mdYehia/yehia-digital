@@ -34,16 +34,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Planned next sections
-
-1. About Snapshot
-2. What I Do (three capability cards)
-3. Tools Behind My Work (horizontal carousel)
-4. Selected Work / Case Studies (six-card grid)
-5. Professional Journey (vertical timeline)
-6. How I Work (editorial block)
-7. Contact CTA + Footer
-
 ## Deployment
 
 Deploy on Vercel. Connect the repo, set the root directory to `02_PORTFOLIO_WEBSITE/site`, and deploy. No environment variables required for this milestone.
