@@ -130,7 +130,7 @@ const workItems: WorkItem[] = [
   /* ------------------------------------------------------------------------ */
   {
     id: "halsa-bake",
-    title: "Halsa Bake",
+    title: "HÄLSA Bake",
     category: "fmcg",
     featured: true,
     image: "/images/project-banners/halsabake.jpeg",
@@ -162,7 +162,7 @@ const workItems: WorkItem[] = [
     category: "commerce",
     featured: false,
     image: "/images/project-banners/tajerinn.jpeg",
-    business: "Raw Material Trading",
+    business: "Retail & E-commerce",
     location: "Egypt",
     year: "2012",
     line: "Social content, e-commerce promotions, and on-page SEO for a retail group.",
@@ -174,7 +174,7 @@ const workItems: WorkItem[] = [
     category: "commerce",
     featured: false,
     image: "/images/project-banners/hyperplus.jpeg",
-    business: "Hyper Market",
+    business: "Hypermarket Retail",
     location: "Cairo",
     year: "2009",
     line: "Social content, promotions, and website updates for a hypermarket retailer.",
@@ -186,7 +186,7 @@ const workItems: WorkItem[] = [
     category: "commerce",
     featured: false,
     image: "/images/project-banners/fabz.jpeg",
-    business: "Fashion",
+    business: "Fashion Brand",
     location: "Cairo",
     year: "2018",
     line: "Agency-side performance campaigns and content for a fashion brand.",
@@ -198,7 +198,7 @@ const workItems: WorkItem[] = [
     category: "commerce",
     featured: false,
     image: "/images/project-banners/ana.jpeg",
-    business: "Fashion",
+    business: "Fashion & Couture",
     location: "Cairo",
     year: "2026",
     line: "Brand and social growth support for a couture fashion label.",
@@ -210,7 +210,7 @@ const workItems: WorkItem[] = [
     category: "commerce",
     featured: false,
     image: "/images/project-banners/nano-line.jpeg",
-    business: "Kitchen Equipment Trading",
+    business: "Professional Kitchen Equipment",
     location: "UAE",
     year: "2024",
     line: "Marketplace and storefront support for professional kitchen-equipment trading.",
@@ -326,7 +326,7 @@ const workItems: WorkItem[] = [
     category: "services",
     featured: false,
     image: "/images/project-banners/l-misk.jpeg",
-    business: "Window installation services",
+    business: "UPVC & Window Services",
     location: "Bahrain",
     year: "2025",
     line: "Digital content and web presence for a window-installation services business.",
@@ -338,7 +338,7 @@ const workItems: WorkItem[] = [
     category: "services",
     featured: false,
     image: "/images/project-banners/aqa-door.jpeg",
-    business: "Window installation services",
+    business: "UPVC & Interiors",
     location: "Egypt",
     year: "2026",
     line: "Digital content and web presence for a UPVC and interiors business.",
@@ -387,7 +387,7 @@ const workItems: WorkItem[] = [
     category: "healthcare",
     featured: false,
     image: "/images/project-banners/iumak.jpeg",
-    business: "Pharma App",
+    business: "Pharmacy Mobile App",
     location: "Egypt",
     year: "2020",
     line: "Supported UI/UX and product direction for a pharmacy mobile app.",
@@ -459,7 +459,7 @@ function WorkCard({ item }: { item: WorkItem }) {
           {item.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] text-[#94A3B8]"
+              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-[10.5px] text-[#94A3B8] sm:px-2.5 sm:py-1 sm:text-[11px]"
             >
               {tag}
             </span>
@@ -553,6 +553,11 @@ export default function SelectedWorkSection() {
             })}
           </div>
         </motion.div>
+
+        {/* Result count */}
+        <p className="-mt-4 text-xs text-[#94A3B8]/50">
+          {filtered.length} project{filtered.length === 1 ? "" : "s"}
+        </p>
 
         {/* Grid */}
         <motion.div layout className="grid gap-5 sm:grid-cols-2 sm:gap-6">
