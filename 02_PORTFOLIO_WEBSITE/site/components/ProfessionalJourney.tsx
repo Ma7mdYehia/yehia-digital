@@ -35,6 +35,18 @@ const compactLearningCards = [
   },
 ] as const;
 
+function publicSafeJourneyText(text: string) {
+  return text
+    .replace("Scaled education ventures to ~EGP 20M and a 250K+ community; secured Apple AATP authorization.", "Scaled education ventures with double-digit annual growth, a 250K+ community, and Apple AATP authorization.")
+    .replace("Scaled to ~EGP 20M and a 250K+ community", "Scaled to double-digit annual growth and a 250K+ community")
+    .replace("Grew revenue ~SAR 7M→10M in year one; led the first full Odoo ERP implementation.", "Delivered strong first-year revenue growth and led the first full Odoo ERP implementation.")
+    .replace("Grew annual revenue ~SAR 7M→10M in year one", "Delivered strong first-year revenue growth")
+    .replace("Launched an e-commerce website generating SAR 250K+ in its first year", "Launched an e-commerce website that created a new direct-sales channel in its first year")
+    .replace(/~EGP\s?20M/gi, "double-digit growth")
+    .replace(/SAR\s?7M→10M/gi, "strong revenue growth")
+    .replace(/SAR\s?250K\+/gi, "new direct-sales traction");
+}
+
 function CurrentChip() {
   return (
     <span
@@ -255,7 +267,7 @@ export default function ProfessionalJourney() {
                   <p className="text-sm text-[#3DBA8C] font-medium">{role.company}</p>
                 </div>
 
-                <p className="text-sm text-[#94A3B8] leading-relaxed">{role.achievement}</p>
+                <p className="text-sm text-[#94A3B8] leading-relaxed">{publicSafeJourneyText(role.achievement)}</p>
 
                 {/* Impact / responsibility bullets */}
                 {role.bullets && role.bullets.length > 0 && (
@@ -263,7 +275,7 @@ export default function ProfessionalJourney() {
                     {role.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2.5">
                         <span aria-hidden className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#3DBA8C]/70 flex-none" />
-                        <span className="text-sm text-[#E8EDF2]/90 leading-snug">{b}</span>
+                        <span className="text-sm text-[#E8EDF2]/90 leading-snug">{publicSafeJourneyText(b)}</span>
                       </li>
                     ))}
                   </ul>
