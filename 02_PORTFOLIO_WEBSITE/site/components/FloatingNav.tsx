@@ -11,6 +11,7 @@ import {
   Route,
   Workflow,
   Mail,
+  Download,
   Menu,
   X,
 } from "lucide-react";
@@ -31,6 +32,13 @@ const navItems = [
   { id: "how", label: "How I work", icon: Workflow, href: "#how" },
   { id: "contact", label: "Contact", icon: Mail, href: "#contact" },
 ];
+
+// Special final action — links to the CV PDF (not a scroll-spy section).
+const resumeAction = {
+  label: "Download Resume",
+  href: "/files/mohamed-yehia-cv.pdf",
+  icon: Download,
+};
 
 export default function FloatingNav() {
   const [active, setActive] = useState("home");
@@ -107,6 +115,31 @@ export default function FloatingNav() {
             </div>
           );
         })}
+
+        {/* Separator + special Download Resume action */}
+        <div aria-hidden className="my-1 mx-auto h-px w-5 bg-white/[0.12]" />
+        <div className="relative group flex items-center">
+          <a
+            href={resumeAction.href}
+            download
+            aria-label={resumeAction.label}
+            className="flex items-center justify-center w-10 h-10 rounded-xl transition-colors duration-200 border border-[#3DBA8C]/50 bg-[#3DBA8C]/15 text-[#3DBA8C] hover:bg-[#3DBA8C]/25"
+          >
+            <resumeAction.icon size={16} strokeWidth={2} />
+          </a>
+          <span
+            aria-hidden
+            className={[
+              "absolute top-1/2 -translate-y-1/2 pointer-events-none",
+              labelSide,
+              "glass whitespace-nowrap rounded-lg px-2.5 py-1",
+              "font-display text-sm tracking-wider text-[#3DBA8C]",
+              "opacity-0 group-hover:opacity-100 transition-opacity duration-200",
+            ].join(" ")}
+          >
+            {resumeAction.label}
+          </span>
+        </div>
       </nav>
 
       {/* Mobile top bar */}
@@ -157,6 +190,19 @@ export default function FloatingNav() {
                 </a>
               );
             })}
+
+            {/* Distinct final action */}
+            <div aria-hidden className="my-1 h-px bg-white/[0.08]" />
+            <a
+              href={resumeAction.href}
+              download
+              aria-label={resumeAction.label}
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium border border-[#3DBA8C]/40 bg-[#3DBA8C]/10 text-[#3DBA8C]"
+            >
+              <resumeAction.icon size={15} strokeWidth={1.9} />
+              {resumeAction.label}
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>
