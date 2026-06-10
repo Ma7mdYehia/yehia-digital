@@ -115,7 +115,7 @@ export default function WhatIDoOperatingPanel() {
     <section
       id="capabilities"
       aria-label="What I do"
-      className="px-6 lg:pl-24 lg:pr-16 py-24 border-t border-white/[0.06]"
+      className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
     >
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
 

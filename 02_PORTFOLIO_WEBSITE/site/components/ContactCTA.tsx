@@ -31,12 +31,12 @@ export default function ContactCTA() {
     <section
       id="contact"
       aria-label="Contact"
-      className="px-6 lg:pl-24 lg:pr-16 py-24 border-t border-white/[0.06]"
+      className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
           {...reveal(0)}
-          className="relative glass rounded-3xl border border-white/[0.10] overflow-hidden"
+          className="relative glass rounded-3xl border border-[#3DBA8C]/20 overflow-hidden"
         >
           <div
             aria-hidden

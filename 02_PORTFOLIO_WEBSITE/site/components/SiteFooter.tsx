@@ -5,7 +5,7 @@ export default function SiteFooter() {
   return (
     <footer
       role="contentinfo"
-      className="px-6 lg:pl-24 lg:pr-16 py-10 border-t border-white/[0.06]"
+      className="px-6 lg:px-24 py-10 border-t border-white/[0.06]"
     >
       <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-[#94A3B8]/50 leading-relaxed order-2 sm:order-1 text-center sm:text-left">

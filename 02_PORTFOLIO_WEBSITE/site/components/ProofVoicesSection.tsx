@@ -22,7 +22,7 @@ export default function ProofVoicesSection() {
     <section
       id="proof"
       aria-label="Proof and voices"
-      className="px-6 lg:pl-24 lg:pr-16 py-24 border-t border-white/[0.06]"
+      className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
     >
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
 
