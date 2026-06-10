@@ -30,8 +30,6 @@ interface WorkItem {
   year: string;
   line: string;
   tags: string[];
-  /** Optional: names rolled up into a grouped proof card. */
-  includedProjects?: string[];
 }
 
 const workFilters: { id: WorkCategory; label: string }[] = [
@@ -349,25 +347,88 @@ const workItems: WorkItem[] = [
   /*  Healthcare                                                               */
   /* ------------------------------------------------------------------------ */
   {
-    id: "healthcare-agency-growth",
-    title: "Healthcare Practices — Egypt",
+    id: "dr-talat-al-sammy",
+    title: "Dr. Talat AL Sammy",
     category: "healthcare",
     featured: false,
     image: "/images/project-banners/dr.talat.jpeg",
-    business: "Healthcare Growth Portfolio",
+    business: "Medical Center",
     location: "Egypt",
-    year: "2014–2017",
-    line: "Agency-side content, paid campaigns, and web presence for doctors and medical centers.",
+    year: "2017",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
     tags: ["Healthcare", "Paid Media", "Content", "Website"],
-    includedProjects: [
-      "Dr. Talat AL Sammy",
-      "Dr. Rania Lotfy",
-      "Dr. Hassan Ashour",
-      "Dr. Kareem Sabry",
-      "Dr. Osama AL Tih",
-      "Dr. Mohamed Reda",
-      "AL Safwa Center",
-    ],
+  },
+  {
+    id: "dr-rania-lotfy",
+    title: "Dr. Rania Lotfy",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.rania.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2017",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Paid Media", "Content"],
+  },
+  {
+    id: "dr-hassan-ashour",
+    title: "Dr. Hassan Ashour",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.hassanashour.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Website"],
+  },
+  {
+    id: "dr-kareem-sabry",
+    title: "Dr. Kareem Sabry",
+    category: "healthcare",
+    featured: true,
+    image: "/images/project-banners/dr.kareemsabry.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2014",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Paid Media", "Content", "Website"],
+  },
+  {
+    id: "dr-osama-al-tih",
+    title: "Dr. Osama AL Tih",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.osamaeltih.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Paid Media"],
+  },
+  {
+    id: "dr-mohamed-reda",
+    title: "Dr. Mohamed Reda",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/dr.mohamed-reda.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Website"],
+  },
+  {
+    id: "al-safwa-center",
+    title: "AL Safwa Center",
+    category: "healthcare",
+    featured: false,
+    image: "/images/project-banners/al-safwa-center.jpeg",
+    business: "Medical Center",
+    location: "Egypt",
+    year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical center.",
+    tags: ["Healthcare", "Content", "Website"],
   },
   {
     id: "al-amin-clinics",
@@ -446,13 +507,6 @@ function WorkCard({ item }: { item: WorkItem }) {
         <p className="text-sm leading-relaxed text-[#94A3B8] line-clamp-2">
           {item.line}
         </p>
-
-        {/* Grouped-card rollup note */}
-        {item.includedProjects && item.includedProjects.length > 0 && (
-          <p className="text-xs leading-relaxed text-[#94A3B8]/60">
-            Includes selected doctors and medical centers across Egypt.
-          </p>
-        )}
 
         {/* Service tags */}
         <div className="flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
