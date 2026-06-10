@@ -16,7 +16,8 @@ type WorkCategory =
   | "fmcg"
   | "education"
   | "healthcare"
-  | "other";
+  | "commerce"
+  | "services";
 
 interface WorkItem {
   id: string;
@@ -27,6 +28,8 @@ interface WorkItem {
   business: string;
   location: string;
   year: string;
+  line: string;
+  tags: string[];
 }
 
 const workFilters: { id: WorkCategory; label: string }[] = [
@@ -36,26 +39,17 @@ const workFilters: { id: WorkCategory; label: string }[] = [
   { id: "fmcg", label: "Food & FMCG" },
   { id: "education", label: "Education" },
   { id: "healthcare", label: "Healthcare" },
-  { id: "other", label: "Other" },
+  { id: "commerce", label: "Commerce & Retail" },
+  { id: "services", label: "Agencies & Services" },
 ];
 
 const workIntro =
-  "A curated view of projects across B2B manufacturing, food and FMCG, education, healthcare, and digital growth work.";
+  "A curated view of projects across B2B manufacturing, food and FMCG, education, healthcare, commerce, and agency growth work.";
 
 const workItems: WorkItem[] = [
   /* ------------------------------------------------------------------------ */
   /*  B2B / Manufacturing                                                     */
   /* ------------------------------------------------------------------------ */
-  {
-    id: "al-shuhail-food-industry",
-    title: "Al Shuhail Food Industry",
-    category: "b2b",
-    featured: true,
-    image: "/images/project-banners/al-shuhail.jpeg",
-    business: "Bakery Manufacture",
-    location: "UAE",
-    year: "2024",
-  },
   {
     id: "el-shohail-trading",
     title: "EL Shohail Trading",
@@ -65,6 +59,8 @@ const workItems: WorkItem[] = [
     business: "Bakery Machinery Trading",
     location: "Saudi Arabia",
     year: "2022",
+    line: "Built B2B digital growth, e-commerce, and ERP-led operating workflows.",
+    tags: ["B2B", "E-commerce", "ERP", "Odoo"],
   },
   {
     id: "csc-export-import",
@@ -75,6 +71,8 @@ const workItems: WorkItem[] = [
     business: "Sourcing & Trading",
     location: "Egypt",
     year: "2017",
+    line: "Led digital content, website, and SEO across export markets.",
+    tags: ["Content", "Website", "SEO"],
   },
   {
     id: "zadmak",
@@ -85,6 +83,8 @@ const workItems: WorkItem[] = [
     business: "Bakery Machinery Manufacture",
     location: "Egypt",
     year: "2023",
+    line: "Group marketing and digital support for a bakery-machinery manufacturer.",
+    tags: ["B2B", "Content", "Brand"],
   },
   {
     id: "zucchilli-forni",
@@ -95,6 +95,8 @@ const workItems: WorkItem[] = [
     business: "Bakery Machinery Manufacture",
     location: "Italy",
     year: "2023",
+    line: "Group marketing and digital-presence support for a bakery-equipment maker.",
+    tags: ["B2B", "Brand", "Website"],
   },
   {
     id: "nano-food-machine",
@@ -105,31 +107,25 @@ const workItems: WorkItem[] = [
     business: "Bakery Machinery Trading",
     location: "Egypt",
     year: "2021",
+    line: "Digital marketing and product presentation for bakery-machinery trading.",
+    tags: ["B2B", "Content", "Paid Media"],
   },
   {
-    id: "tajerinn",
-    title: "Tajerinn",
+    id: "silicon-star",
+    title: "Silicon Star",
     category: "b2b",
     featured: false,
-    image: "/images/project-banners/tajerinn.jpeg",
-    business: "Raw Material Trading",
-    location: "Egypt",
-    year: "2012",
+    image: "/images/project-banners/silicon-star.jpeg",
+    business: "Building Material Trading",
+    location: "Saudi Arabia",
+    year: "2024",
+    line: "Digital marketing and brand presence for a building-materials trader.",
+    tags: ["B2B", "Content", "Brand"],
   },
 
   /* ------------------------------------------------------------------------ */
   /*  Food & FMCG                                                              */
   /* ------------------------------------------------------------------------ */
-  {
-    id: "hyper-plus",
-    title: "Hyper Plus",
-    category: "fmcg",
-    featured: false,
-    image: "/images/project-banners/hyperplus.jpeg",
-    business: "Hyper Market",
-    location: "Cairo",
-    year: "2009",
-  },
   {
     id: "halsa-bake",
     title: "Halsa Bake",
@@ -139,46 +135,84 @@ const workItems: WorkItem[] = [
     business: "Healthy Bakery",
     location: "UAE",
     year: "2025",
+    line: "Launched e-commerce and organic growth systems for a clean-label bakery brand.",
+    tags: ["Growth", "E-commerce", "Organic", "FMCG"],
+  },
+  {
+    id: "al-shuhail-food-industry",
+    title: "Al Shuhail Food Industry",
+    category: "fmcg",
+    featured: true,
+    image: "/images/project-banners/al-shuhail.jpeg",
+    business: "Bakery Manufacture",
+    location: "UAE",
+    year: "2024",
+    line: "Group brand, marketing, and business-systems support for a bakery manufacturing arm.",
+    tags: ["Brand", "Operations", "FMCG"],
+  },
+
+  /* ------------------------------------------------------------------------ */
+  /*  Commerce & Retail                                                       */
+  /* ------------------------------------------------------------------------ */
+  {
+    id: "tajerinn",
+    title: "Tajerinn",
+    category: "commerce",
+    featured: false,
+    image: "/images/project-banners/tajerinn.jpeg",
+    business: "Raw Material Trading",
+    location: "Egypt",
+    year: "2012",
+    line: "Social content, e-commerce promotions, and on-page SEO for a retail group.",
+    tags: ["Content", "E-commerce", "SEO", "Retail"],
+  },
+  {
+    id: "hyper-plus",
+    title: "Hyper Plus",
+    category: "commerce",
+    featured: false,
+    image: "/images/project-banners/hyperplus.jpeg",
+    business: "Hyper Market",
+    location: "Cairo",
+    year: "2009",
+    line: "Social content, promotions, and website updates for a hypermarket retailer.",
+    tags: ["Content", "Social Media", "Retail"],
   },
   {
     id: "fabz",
     title: "F A B Z",
-    category: "fmcg",
+    category: "commerce",
     featured: false,
     image: "/images/project-banners/fabz.jpeg",
     business: "Fashion",
     location: "Cairo",
     year: "2018",
+    line: "Agency-side performance campaigns and content for a fashion brand.",
+    tags: ["Paid Media", "Content", "Social Media"],
   },
   {
     id: "ana-couture",
     title: "ANA Couture",
-    category: "fmcg",
-    featured: true,
+    category: "commerce",
+    featured: false,
     image: "/images/project-banners/ana.jpeg",
     business: "Fashion",
     location: "Cairo",
     year: "2026",
-  },
-  {
-    id: "silicon-star",
-    title: "Silicon Star",
-    category: "fmcg",
-    featured: false,
-    image: "/images/project-banners/silicon-star.jpeg",
-    business: "Building Material Trading",
-    location: "Saudi Arabia",
-    year: "2024",
+    line: "Brand and social growth support for a couture fashion label.",
+    tags: ["Brand", "Social Media", "Content"],
   },
   {
     id: "nano-line-trading",
     title: "Nano Line Trading",
-    category: "fmcg",
+    category: "commerce",
     featured: false,
     image: "/images/project-banners/nano-line.jpeg",
     business: "Kitchen Equipment Trading",
     location: "UAE",
     year: "2024",
+    line: "Marketplace and storefront support for professional kitchen-equipment trading.",
+    tags: ["E-commerce", "Retail", "Operations"],
   },
 
   /* ------------------------------------------------------------------------ */
@@ -193,6 +227,8 @@ const workItems: WorkItem[] = [
     business: "Software Education",
     location: "Egypt",
     year: "2016",
+    line: "Co-founded and scaled a programming academy with Apple AATP authorization.",
+    tags: ["Education", "Growth", "Brand"],
   },
   {
     id: "atletico-de-madrid-academy",
@@ -203,6 +239,8 @@ const workItems: WorkItem[] = [
     business: "Sports & Training",
     location: "Egypt",
     year: "2018",
+    line: "Agency-side campaigns and content for a sports academy.",
+    tags: ["Paid Media", "Content", "Education"],
   },
   {
     id: "ima-studio",
@@ -213,6 +251,8 @@ const workItems: WorkItem[] = [
     business: "Beauty & Fashion Training",
     location: "Egypt",
     year: "2018",
+    line: "Launched and grew a makeup-and-fashion academy through content-led marketing.",
+    tags: ["Education", "Content", "Social Media"],
   },
   {
     id: "tech-village-academy",
@@ -223,6 +263,8 @@ const workItems: WorkItem[] = [
     business: "Software Education",
     location: "Egypt",
     year: "2015",
+    line: "Marketing and content support for a software-training academy.",
+    tags: ["Education", "Content"],
   },
   {
     id: "gama-academy",
@@ -233,6 +275,8 @@ const workItems: WorkItem[] = [
     business: "Kids Education",
     location: "Egypt",
     year: "2019",
+    line: "Agency-side campaigns and content for a kids’ education brand.",
+    tags: ["Paid Media", "Content", "Education"],
   },
   {
     id: "mehrat",
@@ -243,6 +287,8 @@ const workItems: WorkItem[] = [
     business: "Business & HR Education",
     location: "Egypt",
     year: "2015",
+    line: "Social calendar and paid campaigns for corporate training programs.",
+    tags: ["Social Media", "Paid Media", "Education"],
   },
   {
     id: "swiss-school-of-management",
@@ -253,40 +299,48 @@ const workItems: WorkItem[] = [
     business: "Business Education",
     location: "Egypt",
     year: "2019",
+    line: "Marketing and content support for a business-education school.",
+    tags: ["Education", "Content"],
   },
 
   /* ------------------------------------------------------------------------ */
-  /*  Other                                                                    */
+  /*  Agencies & Services                                                      */
   /* ------------------------------------------------------------------------ */
   {
     id: "pointer-advertising",
     title: "Pointer Advertising",
-    category: "other",
+    category: "services",
     featured: true,
     image: "/images/project-banners/pointer.jpeg",
     business: "Social Media Agency",
     location: "Egypt",
     year: "2018",
+    line: "Led agency delivery across healthcare, education, fashion, and performance campaigns.",
+    tags: ["Paid Media", "Content", "Operations"],
   },
   {
     id: "el-misk",
     title: "EL Misk",
-    category: "other",
+    category: "services",
     featured: false,
     image: "/images/project-banners/l-misk.jpeg",
     business: "Window installation services",
     location: "Bahrain",
     year: "2025",
+    line: "Digital content and web presence for a window-installation services business.",
+    tags: ["Content", "Website", "Social Media"],
   },
   {
     id: "aqua-door",
     title: "Aqua Door",
-    category: "other",
+    category: "services",
     featured: false,
     image: "/images/project-banners/aqa-door.jpeg",
     business: "Window installation services",
     location: "Egypt",
     year: "2026",
+    line: "Digital content and web presence for a UPVC and interiors business.",
+    tags: ["Content", "Website", "Social Media"],
   },
 
   /* ------------------------------------------------------------------------ */
@@ -301,6 +355,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2017",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Paid Media", "Content", "Website"],
   },
   {
     id: "dr-rania-lotfy",
@@ -311,6 +367,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2017",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Paid Media", "Content"],
   },
   {
     id: "dr-hassan-ashour",
@@ -321,6 +379,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Website"],
   },
   {
     id: "dr-kareem-sabry",
@@ -331,6 +391,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2014",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Paid Media", "Content", "Website"],
   },
   {
     id: "dr-osama-al-tih",
@@ -341,6 +403,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Paid Media"],
   },
   {
     id: "dr-mohamed-reda",
@@ -351,6 +415,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical practice.",
+    tags: ["Healthcare", "Content", "Website"],
   },
   {
     id: "al-safwa-center",
@@ -361,6 +427,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Egypt",
     year: "2016",
+    line: "Agency-side content, paid campaigns, and web presence for a medical center.",
+    tags: ["Healthcare", "Content", "Website"],
   },
   {
     id: "al-amin-clinics",
@@ -371,6 +439,8 @@ const workItems: WorkItem[] = [
     business: "Medical Center",
     location: "Saudi Arabia",
     year: "2022",
+    line: "Group marketing and digital support for a healthcare clinic brand.",
+    tags: ["Healthcare", "Brand", "Content"],
   },
   {
     id: "iumak",
@@ -381,6 +451,8 @@ const workItems: WorkItem[] = [
     business: "Pharma App",
     location: "Egypt",
     year: "2020",
+    line: "Supported UI/UX and product direction for a pharmacy mobile app.",
+    tags: ["Product", "UI/UX", "Healthcare"],
   },
 ];
 
@@ -430,19 +502,22 @@ function WorkCard({ item }: { item: WorkItem }) {
         <h3 className="text-lg font-semibold leading-snug tracking-tight text-[#E8EDF2] sm:text-xl">
           {item.title}
         </h3>
-        <div className="grid grid-cols-2 gap-3 border-t border-white/[0.06] pt-3">
-          <div className="flex min-w-0 flex-col gap-0.5">
-            <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
-              Business
-            </p>
-            <p className="truncate text-xs text-[#94A3B8]">{item.business}</p>
-          </div>
-          <div className="flex min-w-0 flex-col gap-0.5">
-            <p className="text-[10px] font-medium uppercase tracking-widest text-[#94A3B8]/50">
-              Market
-            </p>
-            <p className="truncate text-xs text-[#94A3B8]">{item.location}</p>
-          </div>
+
+        {/* Role / outcome line */}
+        <p className="text-sm leading-relaxed text-[#94A3B8] line-clamp-2">
+          {item.line}
+        </p>
+
+        {/* Service tags */}
+        <div className="flex flex-wrap gap-1.5 border-t border-white/[0.06] pt-3">
+          {item.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] text-[#94A3B8]"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     </motion.article>
