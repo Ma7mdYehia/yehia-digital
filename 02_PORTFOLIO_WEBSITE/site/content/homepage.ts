@@ -1,6 +1,6 @@
 export const hero = {
   name: "Mohamed Yehia",
-  title: "Growth Marketing, E-commerce & AI Transformation Lead",
+  title: "Growth Marketing & AI Transformation Lead",
   location: "Based between UAE & Egypt.",
   valueStatement:
     "15+ years turning marketing and e-commerce into measurable revenue — building the systems, teams, and AI-augmented workflows that make growth repeatable across the UAE, KSA, and Egypt.",
@@ -76,19 +76,39 @@ export const whoIAm = {
   // Large left-side display heading; the middle line is accented.
   headingLines: ["Build", "Growth", "Systems"] as const,
   accentLineIndex: 1,
-  // Approved about copy, split for readability with a few accented phrases.
+  // Profile copy — senior, AI-powered, mentor/early-stage positioning.
+  // A few phrases are accent-highlighted (kept to 5).
   introParagraphs: [
     [
-      { text: "I'm Mohamed Yehia, a " },
-      { text: "growth, e-commerce, and business-systems leader", accent: true },
-      { text: " with 15+ years across the " },
-      { text: "UAE, KSA, and Egypt", accent: true },
-      { text: "." },
+      {
+        text:
+          "I'm Mohamed Yehia — a growth, e-commerce, and business-systems leader with 15+ years across the UAE, KSA, and Egypt. Today, that experience is amplified by ",
+      },
+      { text: "AI-powered execution", accent: true },
+      {
+        text:
+          ": faster research, sharper planning, stronger content systems, better reporting, and more repeatable growth operations.",
+      },
+    ],
+    [
+      { text: "I help " },
+      { text: "founders, startups, and traditional businesses", accent: true },
+      { text: " find the right first steps: " },
+      { text: "building marketing departments from zero", accent: true },
+      {
+        text:
+          ", launching e-commerce channels, introducing digital workflows, and turning scattered activity into a clear operating system.",
+      },
     ],
     [
       {
         text:
-          "I've launched e-commerce channels, grown revenue for B2B and consumer brands, run ERP implementations, and co-founded businesses of my own — connecting ",
+          "Because I've built companies, co-founded ventures, led teams, implemented ERP workflows, and grown both B2B and consumer brands, I can ",
+      },
+      { text: "lead, educate, and mentor teams", accent: true },
+      {
+        text:
+          " through the messy early stages of digital transformation — connecting ",
       },
       { text: "strategy, execution, and results", accent: true },
       { text: "." },
@@ -98,7 +118,7 @@ export const whoIAm = {
   resultCards: [
     { value: "~USD 5M", label: "Revenue across food industry" },
     { value: "~USD 2.5M", label: "Revenue across education ventures" },
-    { value: "~USD 1.7M", label: "Revenue across healthcare" },
+    { value: "~USD 1.7M", label: "Revenue across healthcare sector" },
     { value: "+250M", label: "Organic reach across platforms" },
     { value: "+5M", label: "Followers across platforms" },
   ] as ResultCard[],

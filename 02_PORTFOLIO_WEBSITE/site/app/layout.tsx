@@ -35,12 +35,12 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Mohamed Yehia — Growth Marketing, E-commerce & AI Transformation Lead",
+  title: "Mohamed Yehia — Growth Marketing & AI Transformation Lead",
   description:
     "15+ years turning marketing and e-commerce into measurable revenue across UAE, KSA, and Egypt.",
   metadataBase: new URL("https://yehia.digital"),
   openGraph: {
-    title: "Mohamed Yehia — Growth Marketing, E-commerce & AI Transformation Lead",
+    title: "Mohamed Yehia — Growth Marketing & AI Transformation Lead",
     description:
       "15+ years turning marketing and e-commerce into measurable revenue across UAE, KSA, and Egypt.",
     type: "website",

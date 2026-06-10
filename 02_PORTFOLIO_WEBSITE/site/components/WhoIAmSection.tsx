@@ -1,13 +1,66 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { whoIAm } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
+
+/* Parse a metric like "~USD 2.5M" / "+250M" into prefix · number · suffix. */
+function parseMetric(value: string) {
+  const m = value.match(/^([^\d]*)([\d.]+)(.*)$/);
+  if (!m) return { prefix: "", target: 0, decimals: 0, suffix: value };
+  const [, prefix, num, suffix] = m;
+  const decimals = num.includes(".") ? num.split(".")[1].length : 0;
+  return { prefix, target: parseFloat(num), decimals, suffix };
+}
+
+/**
+ * Result-card number with a once-only count-up.
+ * SSR-safe: renders the final value on the server and the first client render
+ * (so hydration matches), then counts up from 0 after mount when `play` is true.
+ * Honours reduced motion by skipping the animation.
+ */
+function MetricValue({ value, play }: { value: string; play: boolean }) {
+  const isClient = useIsClient();
+  const prefersReduced = useReducedMotion();
+  const parsed = useMemo(() => parseMetric(value), [value]);
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    if (!isClient) return;
+    if (prefersReduced || !play) {
+      setDisplay(value);
+      return;
+    }
+    const format = (n: number) =>
+      `${parsed.prefix}${n.toFixed(parsed.decimals)}${parsed.suffix}`;
+
+    let raf = 0;
+    const duration = 1200;
+    const start = performance.now();
+    setDisplay(format(0));
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setDisplay(format(parsed.target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else setDisplay(value); // exact approved string at the end
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [isClient, prefersReduced, play, value, parsed]);
+
+  return <>{display}</>;
+}
 
 export default function WhoIAmSection() {
   const isClient = useIsClient();
   const prefersReduced = useReducedMotion();
   const animate = isClient && !prefersReduced;
+
+  // Trigger the counters once the results grid enters the viewport.
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const resultsInView = useInView(resultsRef, { once: true, margin: "-80px" });
 
   const reveal = (delay = 0) =>
     animate
@@ -88,29 +141,44 @@ export default function WhoIAmSection() {
             {whoIAm.resultsLabel}
           </motion.p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-            {whoIAm.resultCards.map((card, i) => (
-              <motion.div
-                key={card.label}
-                {...reveal(0.1 + i * 0.06)}
-                className={[
-                  "rounded-2xl border border-white/[0.08] bg-[#0F1724]",
-                  "hover:border-white/[0.16] transition-colors duration-300",
-                  "px-6 py-7 flex flex-col gap-3",
-                  // Balanced 3-over-2 layout on desktop (centred second row)
-                  "lg:col-span-2",
-                  i === 3 ? "lg:col-start-2" : "",
-                ].join(" ")}
-              >
-                {/* Restrained sage accent rule */}
-                <span aria-hidden className="block w-6 h-px bg-[#3DBA8C]/60" />
+          {/* group/cards drives the soft reactive glow behind the grid */}
+          <div ref={resultsRef} className="relative group/cards">
+            {/* Soft sage glow — brightens slightly when a card is hovered */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 rounded-[2rem] opacity-0 group-hover/cards:opacity-100 transition-opacity duration-500"
+              style={{
+                background:
+                  "radial-gradient(55% 55% at 50% 40%, rgba(61,186,140,0.10), transparent 70%)",
+              }}
+            />
 
-                <span className="font-display text-4xl sm:text-5xl text-[#E8EDF2] leading-none tracking-[0.01em]">
-                  {card.value}
-                </span>
-                <p className="text-sm text-[#94A3B8] leading-snug">{card.label}</p>
-              </motion.div>
-            ))}
+            <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+              {whoIAm.resultCards.map((card, i) => (
+                <motion.div
+                  key={card.label}
+                  {...reveal(0.1 + i * 0.06)}
+                  whileHover={animate ? { y: -3 } : undefined}
+                  className={[
+                    "rounded-2xl border border-white/[0.08] bg-[#0F1724]",
+                    "hover:border-[#3DBA8C]/35 hover:shadow-[0_0_26px_-6px_rgba(61,186,140,0.22)]",
+                    "transition-[border-color,box-shadow] duration-300",
+                    "px-6 py-7 flex flex-col gap-3",
+                    // Balanced 3-over-2 layout on desktop (centred second row)
+                    "lg:col-span-2",
+                    i === 3 ? "lg:col-start-2" : "",
+                  ].join(" ")}
+                >
+                  {/* Restrained sage accent rule */}
+                  <span aria-hidden className="block w-6 h-px bg-[#3DBA8C]/60" />
+
+                  <span className="font-display text-4xl sm:text-5xl text-[#E8EDF2] leading-none tracking-[0.01em] tabular-nums">
+                    <MetricValue value={card.value} play={resultsInView} />
+                  </span>
+                  <p className="text-sm text-[#94A3B8] leading-snug">{card.label}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
