@@ -817,10 +817,10 @@ export const journeyItems: JourneyItem[] = [
     market: "Egypt",
     category: "Founder · Education",
     achievement:
-      "Scaled education ventures to ~EGP 20M and a 250K+ community; secured Apple AATP authorization.",
+      "Scaled education ventures with double-digit annual growth, a 250K+ community, and Apple AATP authorization.",
     bullets: [
       "Co-founded and scaled education ventures",
-      "Scaled to ~EGP 20M and a 250K+ community",
+      "Scaled to double-digit annual growth and a 250K+ community",
       "Secured Apple AATP authorization",
     ],
     focus: ["Education", "Growth", "Founder"],
@@ -866,9 +866,9 @@ export const journeyItems: JourneyItem[] = [
     market: "KSA",
     category: "B2B operations",
     achievement:
-      "Grew revenue ~SAR 7M→10M in year one; led the first full Odoo ERP implementation.",
+      "Delivered strong first-year revenue growth and led the company’s first full Odoo ERP implementation.",
     bullets: [
-      "Grew annual revenue ~SAR 7M→10M in year one",
+      "Delivered strong first-year revenue growth",
       "Led the company’s first full Odoo ERP implementation",
     ],
     focus: ["B2B", "Revenue", "ERP"],
