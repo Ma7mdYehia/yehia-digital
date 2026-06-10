@@ -269,6 +269,133 @@ export const whatIDo = {
 };
 
 /* -------------------------------------------------------------------------- */
+/*  Operating Stack — tool categories mapped to the two operating modes        */
+/* -------------------------------------------------------------------------- */
+
+export type ToolStackLane = "marketing" | "systems" | "shared";
+
+export interface ToolStackCategory {
+  id: string;
+  title: string;
+  lane: ToolStackLane;
+  laneLabel: string;
+  purpose: string;
+  tools: string[];
+}
+
+export const operatingStackMeta = {
+  eyebrow: "Operating stack",
+  heading: "The stack behind the two operating modes.",
+  intro:
+    "A practical mix of marketing platforms, creative production, AI tools, e-commerce systems, ERP, reporting, and project-management tools used to turn strategy into execution.",
+  note: "Not just tools — an operating stack used across growth, systems, and AI transformation.",
+  lanes: [
+    { id: "marketing" as ToolStackLane, label: "Marketing & Digital Growth" },
+    { id: "shared" as ToolStackLane, label: "Shared AI Layer" },
+    { id: "systems" as ToolStackLane, label: "Business Systems & Executive Ops" },
+  ],
+};
+
+export const operatingStackCategories: ToolStackCategory[] = [
+  {
+    id: "growth-analytics",
+    title: "Growth & Analytics",
+    lane: "marketing",
+    laneLabel: "Marketing & Digital Growth",
+    purpose: "Campaigns, tracking, attribution, analytics, and growth decisions.",
+    tools: [
+      "Google Ads",
+      "Google Analytics",
+      "GA4",
+      "Google Tag Manager",
+      "Looker Studio",
+      "Meta Ads Manager",
+      "TikTok Ads",
+    ],
+  },
+  {
+    id: "creative-production",
+    title: "Creative Production",
+    lane: "marketing",
+    laneLabel: "Marketing & Digital Growth",
+    purpose:
+      "Visual direction, campaign assets, brand systems, UI drafts, and creative testing.",
+    tools: [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe After Effects",
+      "Adobe Premiere Pro",
+      "Adobe XD",
+      "Canva",
+      "Figma",
+    ],
+  },
+  {
+    id: "video-ai-media",
+    title: "Video & AI Media",
+    lane: "marketing",
+    laneLabel: "Marketing & Digital Growth",
+    purpose:
+      "Short-form content, reels, voice, captions, video ads, and AI-assisted media production.",
+    tools: [
+      "CapCut",
+      "Captions",
+      "ElevenLabs",
+      "Higgsfield",
+      "Canva",
+      "Adobe Premiere Pro",
+      "Adobe After Effects",
+    ],
+  },
+  {
+    id: "ecommerce-web",
+    title: "E-commerce & Web Platforms",
+    lane: "marketing",
+    laneLabel: "Marketing & Digital Growth + Business Systems & Executive Ops",
+    purpose:
+      "Websites, landing pages, product journeys, online stores, and commerce operations.",
+    tools: ["WordPress", "Shopify", "Zid", "Salla", "WooCommerce"],
+  },
+  {
+    id: "ai-research-automation",
+    title: "AI Research & Automation",
+    lane: "shared",
+    laneLabel: "Shared AI execution layer",
+    purpose:
+      "Research, planning, writing, workflow automation, creative exploration, scraping, prototyping, and faster execution.",
+    tools: [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Perplexity",
+      "Apify",
+      "n8n",
+      "Odysseus AI",
+      "Cursor",
+      "Lovable",
+    ],
+  },
+  {
+    id: "erp-crm-systems",
+    title: "ERP / CRM / Business Systems",
+    lane: "systems",
+    laneLabel: "Business Systems & Executive Ops",
+    purpose:
+      "Business operations, CRM, ERP workflows, sales visibility, and digital transformation.",
+    tools: ["Odoo", "Microsoft Dynamics", "Zoho"],
+  },
+  {
+    id: "operations-pm",
+    title: "Operations & Project Management",
+    lane: "systems",
+    laneLabel: "Business Systems & Executive Ops",
+    purpose:
+      "Planning, execution, documentation, task flow, team coordination, and delivery tracking.",
+    tools: ["ClickUp", "Jira", "Mindmap tools", "Microsoft Office"],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
 /*  Proof & Voices — client voices (pending verified quotes) + project proof   */
 /* -------------------------------------------------------------------------- */
 
