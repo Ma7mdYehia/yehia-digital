@@ -1,6 +1,6 @@
 export const hero = {
   name: "Mohamed Yehia",
-  title: "Growth Marketing & AI Transformation Lead",
+  title: "Growth Marketing, E-commerce & AI Transformation Lead",
   location: "Based between UAE & Egypt.",
   valueStatement:
     "15+ years turning marketing and e-commerce into measurable revenue — building the systems, teams, and AI-augmented workflows that make growth repeatable across the UAE, KSA, and Egypt.",
@@ -10,7 +10,7 @@ export const hero = {
   profileSummary: "Growth · E-commerce · AI-Augmented Operations",
   ctas: {
     primary: { label: "View work", href: "#work" },
-    secondary: { label: "Download CV", href: "#download-cv" },
+    secondary: { label: "Download CV", href: "/files/mohamed-yehia-cv.pdf" },
   },
 };
 

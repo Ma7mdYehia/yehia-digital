@@ -47,6 +47,15 @@ export default function HeroSection() {
       {/* Centered hero content */}
       <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-5xl">
 
+        {/* Availability chip — subtle senior signal above the name */}
+        <motion.span
+          {...reveal(0.04)}
+          className="inline-flex items-center gap-2 rounded-full border border-[#3DBA8C]/30 bg-[#3DBA8C]/[0.08] px-3 py-1 text-[11px] sm:text-xs font-medium text-[#3DBA8C] tracking-wide"
+        >
+          <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-[#3DBA8C]" />
+          {hero.statusChip}
+        </motion.span>
+
         {/* Name — MOHAMED + [portrait · YEHIA] group. The portrait stays beside
             YEHIA so on mobile it wraps as: line 1 "MOHAMED", line 2 "[photo] YEHIA". */}
         <motion.h1
@@ -80,9 +89,37 @@ export default function HeroSection() {
           {hero.title}
         </motion.p>
 
+        {/* Value statement — senior positioning line */}
+        <motion.p
+          {...reveal(0.24)}
+          className="text-base sm:text-lg text-[#94A3B8] leading-relaxed max-w-2xl"
+        >
+          {hero.valueStatement}
+        </motion.p>
+
+        {/* Primary CTAs */}
+        <motion.div
+          {...reveal(0.32)}
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mt-1"
+        >
+          <a
+            href={hero.ctas.primary.href}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold bg-[#3DBA8C] text-[#0B1220] hover:bg-[#35a87d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
+          >
+            {hero.ctas.primary.label}
+          </a>
+          <a
+            href={hero.ctas.secondary.href}
+            download
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold border border-white/[0.14] bg-white/[0.03] text-[#E8EDF2] hover:border-[#3DBA8C]/40 hover:bg-white/[0.06] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
+          >
+            {hero.ctas.secondary.label}
+          </a>
+        </motion.div>
+
         {/* Handwritten note — mobile inline (offset hidden on lg) */}
         <motion.p
-          {...reveal(0.28)}
+          {...reveal(0.4)}
           aria-hidden
           className="lg:hidden font-hand text-[#3DBA8C]/85 text-2xl leading-tight mt-1 select-none"
         >

@@ -17,7 +17,10 @@ export default function ContactCTA() {
     transition: { duration: 0.42, ease: "easeOut", delay },
   });
 
-  const primary = contactLinks.filter((l) => l.isPrimary);
+  // Only real, working actions appear as primary CTAs. Placeholder links
+  // (e.g. LinkedIn before a real URL exists) are kept in data but not shown
+  // here, so a primary button never loops back to "#contact".
+  const primary = contactLinks.filter((l) => l.isPrimary && !l.isPlaceholder);
 
   // Primary button tiers: email = solid, cv = ghost, the rest = glass.
   const primaryClass = (link: ContactLink) => {
