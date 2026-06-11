@@ -4,12 +4,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { hero } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 import InteractiveHeroOrb from "@/components/InteractiveHeroOrb";
 
 export default function HeroSection() {
   const isClient = useIsClient();
   const prefersReduced = useReducedMotion();
   const animate = isClient && !prefersReduced;
+  const glowRef = useMouseGlow<HTMLElement>();
 
   // SSR-safe reveal: nothing is hidden on first paint.
   const reveal = (delay = 0) =>
@@ -23,12 +25,17 @@ export default function HeroSection() {
 
   return (
     <section
+      ref={glowRef}
+      data-glow
       id="home"
       aria-label="Introduction"
       className="relative min-h-screen overflow-hidden flex items-center justify-center px-6 lg:px-24 py-24"
     >
       {/* Interactive abstract background */}
       <InteractiveHeroOrb />
+
+      {/* Ambient light field — follows the pointer behind the content */}
+      <div aria-hidden className="hero-light-field" />
 
       {/* Handwritten side note — desktop, offset left */}
       <motion.p
@@ -104,14 +111,14 @@ export default function HeroSection() {
         >
           <a
             href={hero.ctas.primary.href}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold bg-[#3DBA8C] text-[#0B1220] hover:bg-[#35a87d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
+            className="soft-light-sweep inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold bg-[#3DBA8C] text-[#0B1220] hover:bg-[#35a87d] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
           >
             {hero.ctas.primary.label}
           </a>
           <a
             href={hero.ctas.secondary.href}
             download
-            className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold border border-white/[0.14] bg-white/[0.03] text-[#E8EDF2] hover:border-[#3DBA8C]/40 hover:bg-white/[0.06] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
+            className="soft-light-sweep inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold border border-white/[0.14] bg-white/[0.03] text-[#E8EDF2] hover:border-[#3DBA8C]/40 hover:bg-white/[0.06] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3DBA8C]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
           >
             {hero.ctas.secondary.label}
           </a>

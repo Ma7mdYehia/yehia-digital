@@ -4,6 +4,7 @@ import { useRef, useState, type KeyboardEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { whatIDo } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 /* ---------------------------------------------------------------------------
    Brain / AI-operations visual — pure SVG, decorative, no external deps.
@@ -123,6 +124,7 @@ export default function WhatIDoOperatingPanel() {
   const isClient = useIsClient();
   const prefersReduced = useReducedMotion();
   const animate = isClient && !prefersReduced;
+  const glowRef = useMouseGlow<HTMLElement>();
   const [modeIndex, setModeIndex] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -153,6 +155,7 @@ export default function WhatIDoOperatingPanel() {
 
   return (
     <section
+      ref={glowRef}
       id="capabilities"
       aria-label="What I do"
       className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
@@ -185,8 +188,9 @@ export default function WhatIDoOperatingPanel() {
 
         {/* Operating panel */}
         <motion.div
+          data-glow
           {...reveal(0.16)}
-          className="relative rounded-3xl border border-[#3DBA8C]/20 bg-white/[0.03] overflow-hidden"
+          className="mouse-glow-panel relative rounded-3xl border border-[#3DBA8C]/20 bg-white/[0.03] overflow-hidden"
         >
           <div
             aria-hidden

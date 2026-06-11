@@ -7,6 +7,7 @@ import {
   stackCategoryShortLabels,
 } from "@/content/homepage";
 import { useReveal } from "@/lib/motion";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 interface StripTool {
   name: string;
@@ -41,19 +42,22 @@ const stripTools = flattenTools();
 
 export default function OperatingStackSection() {
   const reveal = useReveal();
+  const glowRef = useMouseGlow<HTMLElement>();
 
   return (
     <section
+      ref={glowRef}
       id="tools"
       aria-label="Operating stack"
       className="px-6 lg:px-24 pb-20 -mt-6"
     >
       <motion.div
+        data-glow
         {...reveal(0)}
-        className="max-w-6xl mx-auto relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden"
+        className="mouse-glow-panel max-w-6xl mx-auto relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden"
       >
         {/* Header row — compact, single line on desktop */}
-        <div className="px-5 sm:px-7 pt-5 pb-4 flex flex-col sm:flex-row sm:items-baseline gap-1.5 sm:gap-4">
+        <div className="relative px-5 sm:px-7 pt-5 pb-4 flex flex-col sm:flex-row sm:items-baseline gap-1.5 sm:gap-4">
           <span className="text-[10.5px] text-[#3DBA8C] tracking-[0.22em] uppercase font-medium flex-none">
             {operatingStackStrip.eyebrow}
           </span>

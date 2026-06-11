@@ -196,6 +196,112 @@ body {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Premium lighting + mouse-follow glow                                       */
+/*  Driven by --mouse-x / --mouse-y (written by useMouseGlow). All layers are  */
+/*  pointer-events:none and cause no layout shift. Fallbacks keep a soft,      */
+/*  centred glow when JS is off / touch / reduced motion.                      */
+/* -------------------------------------------------------------------------- */
+
+/* Soft spotlight that follows the cursor inside a panel. The pseudo sits at
+   stack level 0; panel content lives in `relative` wrappers, so it always
+   paints behind the text. */
+.mouse-glow-panel {
+  position: relative;
+}
+.mouse-glow-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(
+    360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(61, 186, 140, 0.10),
+    transparent 62%
+  );
+}
+.mouse-glow-panel:hover::before {
+  opacity: 1;
+}
+
+/* Border-only glow that brightens toward the cursor — for cards. Uses the
+   mask trick so only the 1px edge lights up. */
+.mouse-glow-border {
+  position: relative;
+}
+.mouse-glow-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    220px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(61, 186, 140, 0.55),
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.mouse-glow-border:hover::after {
+  opacity: 1;
+}
+
+/* One-pass light sweep on hover — for buttons. */
+.soft-light-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.soft-light-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.16) 50%,
+    transparent 70%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.6s ease;
+}
+.soft-light-sweep:hover::after {
+  transform: translateX(130%);
+}
+
+/* Hero ambient light field — soft sage/amber wash that tracks the pointer.
+   Sits above the orb, below the centred content. */
+.hero-light-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    560px circle at var(--mouse-x, 50%) var(--mouse-y, 42%),
+    rgba(61, 186, 140, 0.12),
+    rgba(224, 164, 88, 0.04) 42%,
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soft-light-sweep::after {
+    display: none;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

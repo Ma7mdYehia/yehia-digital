@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useReveal } from "@/lib/motion";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 /* -------------------------------------------------------------------------- */
 /*  Selected work data                                                         */
@@ -469,7 +470,8 @@ function WorkCard({ item }: { item: WorkItem }) {
       animate={{ opacity: 1, y: 0 }}
       exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
       transition={{ duration: 0.32, ease: "easeOut" }}
-      className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F1724] shadow-[0_20px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3DBA8C]/30"
+      data-glow
+      className="mouse-glow-border group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F1724] shadow-[0_20px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3DBA8C]/30"
       aria-label={item.title}
     >
       {/* Visual area */}
@@ -531,6 +533,7 @@ function WorkCard({ item }: { item: WorkItem }) {
 
 export default function SelectedWorkSection() {
   const reveal = useReveal();
+  const glowRef = useMouseGlow<HTMLElement>();
   const [active, setActive] = useState<WorkCategory>("featured");
 
   const filtered = useMemo(() => {
@@ -541,6 +544,7 @@ export default function SelectedWorkSection() {
 
   return (
     <section
+      ref={glowRef}
       id="work"
       aria-label="Selected work"
       className="border-t border-white/[0.06] px-6 py-24 lg:px-24"
@@ -570,13 +574,14 @@ export default function SelectedWorkSection() {
 
         {/* Filter bar */}
         <motion.div
+          data-glow
           {...reveal(0.18)}
-          className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-2 sm:p-2.5"
+          className="mouse-glow-panel rounded-2xl border border-white/[0.08] bg-white/[0.02] p-2 sm:p-2.5"
         >
           <div
             role="tablist"
             aria-label="Filter selected work"
-            className="flex flex-wrap gap-1.5 sm:gap-2"
+            className="relative flex flex-wrap gap-1.5 sm:gap-2"
           >
             {workFilters.map((filter) => {
               const isActive = active === filter.id;

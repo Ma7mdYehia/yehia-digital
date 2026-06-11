@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import { contactCTA, contactLinks, type ContactLink } from "@/content/homepage";
 import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
 import { useReveal } from "@/lib/motion";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 const contactLocation = "Based between the UAE & Egypt.";
 
 export default function ContactCTA() {
   const reveal = useReveal();
+  const glowRef = useMouseGlow<HTMLElement>();
 
   // Only real, working actions appear as primary CTAs. Placeholder links
   // (e.g. LinkedIn before a real URL exists) are kept in data but not shown
@@ -26,14 +28,16 @@ export default function ContactCTA() {
 
   return (
     <section
+      ref={glowRef}
       id="contact"
       aria-label="Contact"
       className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
+          data-glow
           {...reveal(0)}
-          className="relative glass rounded-3xl border border-[#3DBA8C]/20 overflow-hidden"
+          className="mouse-glow-panel relative glass rounded-3xl border border-[#3DBA8C]/20 overflow-hidden"
         >
           <div
             aria-hidden
@@ -78,7 +82,7 @@ export default function ContactCTA() {
                     key={link.label}
                     {...contactAnchorProps(link)}
                     className={[
-                      "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors",
+                      "soft-light-sweep inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-colors",
                       primaryClass(link),
                     ].join(" ")}
                   >

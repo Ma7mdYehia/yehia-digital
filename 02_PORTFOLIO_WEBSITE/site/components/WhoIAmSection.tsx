@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { whoIAm } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 /* Parse a metric like "~USD 2.5M" / "+250M" into prefix · number · suffix. */
 function parseMetric(value: string) {
@@ -61,6 +62,7 @@ export default function WhoIAmSection() {
   // Trigger the counters once the results grid enters the viewport.
   const resultsRef = useRef<HTMLDivElement>(null);
   const resultsInView = useInView(resultsRef, { once: true, margin: "-80px" });
+  const glowRef = useMouseGlow<HTMLElement>();
 
   const reveal = (delay = 0) =>
     animate
@@ -74,6 +76,7 @@ export default function WhoIAmSection() {
 
   return (
     <section
+      ref={glowRef}
       id="about"
       aria-label="Who I am"
       className="px-6 lg:px-24 py-24 lg:py-28 border-t border-white/[0.06]"
@@ -157,10 +160,11 @@ export default function WhoIAmSection() {
               {whoIAm.resultCards.map((card, i) => (
                 <motion.div
                   key={card.label}
+                  data-glow
                   {...reveal(0.1 + i * 0.06)}
                   whileHover={animate ? { y: -3 } : undefined}
                   className={[
-                    "rounded-2xl border border-white/[0.08] bg-[#0F1724]",
+                    "mouse-glow-border rounded-2xl border border-white/[0.08] bg-[#0F1724]",
                     "hover:border-[#3DBA8C]/35 hover:shadow-[0_0_26px_-6px_rgba(61,186,140,0.22)]",
                     "transition-[border-color,box-shadow] duration-300",
                     "px-6 py-7 flex flex-col gap-3",

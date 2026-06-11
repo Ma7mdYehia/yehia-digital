@@ -3,15 +3,18 @@
 import { motion } from "framer-motion";
 import { howIWork } from "@/content/homepage";
 import { useReveal } from "@/lib/motion";
+import { useMouseGlow } from "@/lib/useMouseGlow";
 
 export default function HowIWorkSection() {
   const reveal = useReveal();
+  const glowRef = useMouseGlow<HTMLElement>();
 
   // Preserve existing copy: first paragraph as intro, the rest as the method narrative.
   const [intro, ...methodParagraphs] = howIWork.body;
 
   return (
     <section
+      ref={glowRef}
       id="how"
       aria-label="How I work"
       className="px-6 lg:px-24 py-24 border-t border-white/[0.06]"
@@ -36,8 +39,9 @@ export default function HowIWorkSection() {
 
         {/* Operating-rhythm panel */}
         <motion.div
+          data-glow
           {...reveal(0.16)}
-          className="relative rounded-3xl border border-[#3DBA8C]/20 bg-white/[0.03] overflow-hidden"
+          className="mouse-glow-panel relative rounded-3xl border border-[#3DBA8C]/20 bg-white/[0.03] overflow-hidden"
         >
           <div
             aria-hidden
