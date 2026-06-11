@@ -3,19 +3,12 @@
 import { motion } from "framer-motion";
 import { contactCTA, contactLinks, type ContactLink } from "@/content/homepage";
 import { contactIcons, contactAnchorProps } from "@/lib/contactIcons";
-import { useIsClient } from "@/lib/useIsClient";
+import { useReveal } from "@/lib/motion";
 
 const contactLocation = "Based between the UAE & Egypt.";
 
 export default function ContactCTA() {
-  const isClient = useIsClient();
-
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.42, ease: "easeOut", delay },
-  });
+  const reveal = useReveal();
 
   // Only real, working actions appear as primary CTAs. Placeholder links
   // (e.g. LinkedIn before a real URL exists) are kept in data but not shown

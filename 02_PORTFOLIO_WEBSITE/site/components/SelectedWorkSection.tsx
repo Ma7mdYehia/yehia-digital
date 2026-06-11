@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useIsClient } from "@/lib/useIsClient";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useReveal } from "@/lib/motion";
 
 /* -------------------------------------------------------------------------- */
 /*  Selected work data                                                         */
@@ -461,12 +461,13 @@ const workItems: WorkItem[] = [
 /* -------------------------------------------------------------------------- */
 
 function WorkCard({ item }: { item: WorkItem }) {
+  const prefersReduced = useReducedMotion();
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, y: 12 }}
+      initial={prefersReduced ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
+      exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
       transition={{ duration: 0.32, ease: "easeOut" }}
       className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F1724] shadow-[0_20px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3DBA8C]/30"
       aria-label={item.title}
@@ -529,7 +530,7 @@ function WorkCard({ item }: { item: WorkItem }) {
 /* -------------------------------------------------------------------------- */
 
 export default function SelectedWorkSection() {
-  const isClient = useIsClient();
+  const reveal = useReveal();
   const [active, setActive] = useState<WorkCategory>("featured");
 
   const filtered = useMemo(() => {
@@ -537,13 +538,6 @@ export default function SelectedWorkSection() {
     if (active === "featured") return workItems.filter((work) => work.featured);
     return workItems.filter((work) => work.category === active);
   }, [active]);
-
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.42, ease: "easeOut", delay },
-  });
 
   return (
     <section

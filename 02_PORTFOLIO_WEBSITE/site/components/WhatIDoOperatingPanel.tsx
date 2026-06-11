@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { whatIDo } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
 
@@ -121,15 +121,20 @@ function BrainVisual() {
 
 export default function WhatIDoOperatingPanel() {
   const isClient = useIsClient();
+  const prefersReduced = useReducedMotion();
+  const animate = isClient && !prefersReduced;
   const [modeIndex, setModeIndex] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.45, ease: "easeOut", delay },
-  });
+  const reveal = (delay = 0) =>
+    animate
+      ? ({
+          initial: { opacity: 0, y: 16 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-60px" },
+          transition: { duration: 0.45, ease: "easeOut", delay },
+        } as const)
+      : ({} as const);
 
   const activeMode = whatIDo.modes[modeIndex];
 
@@ -246,7 +251,7 @@ export default function WhatIDoOperatingPanel() {
               <div className="p-7 lg:p-9 flex flex-col gap-4">
                 <motion.h3
                   key={`${activeMode.id}-title`}
-                  initial={isClient ? { opacity: 0, y: 8 } : (false as const)}
+                  initial={animate ? { opacity: 0, y: 8 } : (false as const)}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="text-2xl sm:text-3xl font-semibold text-[#E8EDF2] leading-tight tracking-tight"
@@ -255,7 +260,7 @@ export default function WhatIDoOperatingPanel() {
                 </motion.h3>
                 <motion.p
                   key={`${activeMode.id}-desc`}
-                  initial={isClient ? { opacity: 0, y: 8 } : (false as const)}
+                  initial={animate ? { opacity: 0, y: 8 } : (false as const)}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, ease: "easeOut", delay: 0.05 }}
                   className="text-base text-[#94A3B8] leading-relaxed"
@@ -278,7 +283,7 @@ export default function WhatIDoOperatingPanel() {
                 {activeMode.capabilities.map((cap, i) => (
                   <motion.li
                     key={`${activeMode.id}-cap-${i}`}
-                    initial={isClient ? { opacity: 0, y: 8 } : (false as const)}
+                    initial={animate ? { opacity: 0, y: 8 } : (false as const)}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, ease: "easeOut", delay: 0.06 + i * 0.04 }}
                     className="flex gap-3.5"
@@ -310,7 +315,7 @@ export default function WhatIDoOperatingPanel() {
               {activeMode.tools.map((tool) => (
                 <motion.span
                   key={`${activeMode.id}-${tool}`}
-                  initial={isClient ? { opacity: 0, y: 4 } : (false as const)}
+                  initial={animate ? { opacity: 0, y: 4 } : (false as const)}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className="text-[11px] text-[#94A3B8] bg-white/[0.03] border border-white/[0.08] rounded-full px-2.5 py-1"

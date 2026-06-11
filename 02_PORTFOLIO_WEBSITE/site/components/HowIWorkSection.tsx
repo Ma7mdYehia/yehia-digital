@@ -2,17 +2,10 @@
 
 import { motion } from "framer-motion";
 import { howIWork } from "@/content/homepage";
-import { useIsClient } from "@/lib/useIsClient";
+import { useReveal } from "@/lib/motion";
 
 export default function HowIWorkSection() {
-  const isClient = useIsClient();
-
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.45, ease: "easeOut", delay },
-  });
+  const reveal = useReveal();
 
   // Preserve existing copy: first paragraph as intro, the rest as the method narrative.
   const [intro, ...methodParagraphs] = howIWork.body;

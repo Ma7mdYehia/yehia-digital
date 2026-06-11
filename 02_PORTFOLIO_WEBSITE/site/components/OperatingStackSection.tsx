@@ -6,7 +6,7 @@ import {
   operatingStackStrip,
   stackCategoryShortLabels,
 } from "@/content/homepage";
-import { useIsClient } from "@/lib/useIsClient";
+import { useReveal } from "@/lib/motion";
 
 interface StripTool {
   name: string;
@@ -40,14 +40,7 @@ function monogram(name: string): string {
 const stripTools = flattenTools();
 
 export default function OperatingStackSection() {
-  const isClient = useIsClient();
-
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.45, ease: "easeOut", delay },
-  });
+  const reveal = useReveal();
 
   return (
     <section

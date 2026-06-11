@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { GraduationCap, Smartphone, Clock, Award, type LucideIcon } from "lucide-react";
 import {
   journeyEyebrow,
@@ -51,6 +51,8 @@ function CurrentChip() {
 
 export default function ProfessionalJourney() {
   const isClient = useIsClient();
+  const prefersReduced = useReducedMotion();
+  const shouldAnimate = isClient && !prefersReduced;
   const initial = Math.max(
     0,
     journeyItems.findIndex((r) => r.isGroup)
@@ -58,12 +60,15 @@ export default function ProfessionalJourney() {
   const [active, setActive] = useState(initial);
   const role = journeyItems[active];
 
-  const reveal = (delay = 0) => ({
-    initial: isClient ? { opacity: 0, y: 16 } : (false as const),
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { duration: 0.45, ease: "easeOut", delay },
-  });
+  const reveal = (delay = 0) =>
+    shouldAnimate
+      ? ({
+          initial: { opacity: 0, y: 16 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-60px" },
+          transition: { duration: 0.45, ease: "easeOut", delay },
+        } as const)
+      : ({} as const);
 
   return (
     <section
@@ -228,7 +233,7 @@ export default function ProfessionalJourney() {
             <div className="p-5 sm:p-6 lg:p-7 border-t border-white/[0.07] lg:border-t-0 lg:border-l lg:border-white/[0.08]">
               <motion.div
                 key={role.id}
-                initial={isClient ? { opacity: 0, y: 6 } : false}
+                initial={shouldAnimate ? { opacity: 0, y: 6 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7 flex flex-col gap-5 min-h-[300px]"
