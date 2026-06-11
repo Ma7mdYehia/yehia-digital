@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { whatIDo } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
 import { useMouseGlow } from "@/lib/useMouseGlow";
+import { tabContentSlide } from "@/lib/motion";
 
 /* ---------------------------------------------------------------------------
    Brain / AI-operations visual — pure SVG, decorative, no external deps.
@@ -242,9 +243,10 @@ export default function WhatIDoOperatingPanel() {
             </div>
           </div>
 
-          {/* Active mode panel */}
-          <div
+          {/* Active mode panel — slides/fades on mode switch (remount by key) */}
+          <motion.div
             key={activeMode.id}
+            {...tabContentSlide(animate)}
             role="tabpanel"
             id={`whatido-panel-${activeMode.id}`}
             aria-labelledby={`whatido-tab-${activeMode.id}`}
@@ -328,7 +330,7 @@ export default function WhatIDoOperatingPanel() {
                 </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>

@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useReveal } from "@/lib/motion";
+import { useReveal, filterGridTransition } from "@/lib/motion";
 import { useMouseGlow } from "@/lib/useMouseGlow";
+import { useIsClient } from "@/lib/useIsClient";
 
 /* -------------------------------------------------------------------------- */
 /*  Selected work data                                                         */
@@ -461,15 +462,11 @@ const workItems: WorkItem[] = [
 /*  Card                                                                       */
 /* -------------------------------------------------------------------------- */
 
-function WorkCard({ item }: { item: WorkItem }) {
+function WorkCard({ item, index }: { item: WorkItem; index: number }) {
   const prefersReduced = useReducedMotion();
   return (
     <motion.article
-      layout
-      initial={prefersReduced ? false : { opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: -8 }}
-      transition={{ duration: 0.32, ease: "easeOut" }}
+      {...filterGridTransition(!prefersReduced, index)}
       data-glow
       className="mouse-glow-border group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F1724] shadow-[0_20px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#3DBA8C]/30"
       aria-label={item.title}
@@ -534,6 +531,9 @@ function WorkCard({ item }: { item: WorkItem }) {
 export default function SelectedWorkSection() {
   const reveal = useReveal();
   const glowRef = useMouseGlow<HTMLElement>();
+  const isClient = useIsClient();
+  const prefersReduced = useReducedMotion();
+  const animatePill = isClient && !prefersReduced;
   const [active, setActive] = useState<WorkCategory>("featured");
 
   const filtered = useMemo(() => {
@@ -593,14 +593,26 @@ export default function SelectedWorkSection() {
                   aria-selected={isActive}
                   onClick={() => setActive(filter.id)}
                   className={[
-                    "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:text-sm",
+                    "relative rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200 sm:text-sm",
                     "focus-visible:ring-2 focus-visible:ring-[#3DBA8C]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]",
                     isActive
-                      ? "border-[#3DBA8C]/45 bg-[#3DBA8C]/15 text-[#3DBA8C]"
+                      ? "border-transparent text-[#3DBA8C]"
                       : "border-transparent bg-transparent text-[#94A3B8] hover:bg-white/[0.04] hover:text-[#E8EDF2]",
                   ].join(" ")}
                 >
-                  {filter.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="workFilterPill"
+                      aria-hidden
+                      className="absolute inset-0 rounded-full border border-[#3DBA8C]/45 bg-[#3DBA8C]/15"
+                      transition={
+                        animatePill
+                          ? { type: "spring", stiffness: 420, damping: 34 }
+                          : { duration: 0 }
+                      }
+                    />
+                  )}
+                  <span className="relative z-10">{filter.label}</span>
                 </button>
               );
             })}
@@ -615,8 +627,8 @@ export default function SelectedWorkSection() {
         {/* Grid */}
         <motion.div layout className="grid gap-5 sm:grid-cols-2 sm:gap-6">
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
-              <WorkCard key={item.id} item={item} />
+            {filtered.map((item, i) => (
+              <WorkCard key={item.id} item={item} index={i} />
             ))}
           </AnimatePresence>
         </motion.div>

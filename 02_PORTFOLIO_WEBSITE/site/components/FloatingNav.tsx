@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   Home,
   User,
@@ -44,6 +44,7 @@ const resumeAction = {
 export default function FloatingNav() {
   const [active, setActive] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const prefersReduced = useReducedMotion();
 
   // Scroll-spy: highlight the section crossing the viewport's vertical centre.
   useEffect(() => {
@@ -91,13 +92,23 @@ export default function FloatingNav() {
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => setActive(item.id)}
                 className={[
-                  "flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200 glass glass-hover",
-                  isActive
-                    ? "border-[#3DBA8C]/60 bg-[#3DBA8C]/10 text-[#3DBA8C]"
-                    : "text-[#94A3B8] hover:text-[#E8EDF2]",
+                  "relative flex items-center justify-center w-10 h-10 rounded-xl transition-colors duration-200 glass glass-hover",
+                  isActive ? "text-[#3DBA8C]" : "text-[#94A3B8] hover:text-[#E8EDF2]",
                 ].join(" ")}
               >
-                <Icon size={17} strokeWidth={1.75} />
+                {isActive && (
+                  <motion.span
+                    layoutId="navActivePill"
+                    aria-hidden
+                    className="absolute inset-0 rounded-xl border border-[#3DBA8C]/60 bg-[#3DBA8C]/10"
+                    transition={
+                      prefersReduced
+                        ? { duration: 0 }
+                        : { type: "spring", stiffness: 460, damping: 38 }
+                    }
+                  />
+                )}
+                <Icon size={17} strokeWidth={1.75} className="relative z-10" />
               </a>
 
               {/* Label pill — reveals on hover, on the inner side */}

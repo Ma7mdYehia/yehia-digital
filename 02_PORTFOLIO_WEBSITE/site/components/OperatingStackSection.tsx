@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   operatingStackCategories,
   operatingStackStrip,
   stackCategoryShortLabels,
 } from "@/content/homepage";
-import { useReveal } from "@/lib/motion";
+import { useReveal, staggerContainer, staggerItem } from "@/lib/motion";
 import { useMouseGlow } from "@/lib/useMouseGlow";
+import { useIsClient } from "@/lib/useIsClient";
 
 interface StripTool {
   name: string;
@@ -43,6 +44,9 @@ const stripTools = flattenTools();
 export default function OperatingStackSection() {
   const reveal = useReveal();
   const glowRef = useMouseGlow<HTMLElement>();
+  const isClient = useIsClient();
+  const prefersReduced = useReducedMotion();
+  const animate = isClient && !prefersReduced;
 
   return (
     <section
@@ -81,13 +85,15 @@ export default function OperatingStackSection() {
             className="pointer-events-none absolute inset-y-0 right-0 w-10 z-10 bg-gradient-to-l from-[#0B1220] to-transparent"
           />
 
-          <ul
+          <motion.ul
+            {...staggerContainer(animate, 0.015)}
             aria-label="Tools in the operating stack"
             className="no-scrollbar flex gap-2.5 overflow-x-auto px-5 sm:px-7 py-4"
           >
             {stripTools.map((tool) => (
-              <li
+              <motion.li
                 key={tool.name}
+                {...staggerItem(animate)}
                 className="flex-none flex items-center gap-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] hover:border-[#3DBA8C]/35 transition-colors duration-200 pl-1.5 pr-3.5 py-1.5"
               >
                 {tool.logo ? (
@@ -114,9 +120,9 @@ export default function OperatingStackSection() {
                     {tool.categoryLabel}
                   </span>
                 </span>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
       </motion.div>
     </section>

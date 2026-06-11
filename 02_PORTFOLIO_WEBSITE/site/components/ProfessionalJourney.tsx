@@ -14,6 +14,7 @@ import {
 } from "@/content/homepage";
 import { useIsClient } from "@/lib/useIsClient";
 import { useMouseGlow } from "@/lib/useMouseGlow";
+import { detailPanelSlide } from "@/lib/motion";
 
 const learningIcons: Record<LearningCard["icon"], LucideIcon> = {
   university: GraduationCap,
@@ -237,9 +238,7 @@ export default function ProfessionalJourney() {
             <div className="p-5 sm:p-6 lg:p-7 border-t border-white/[0.07] lg:border-t-0 lg:border-l lg:border-white/[0.08]">
               <motion.div
                 key={role.id}
-                initial={shouldAnimate ? { opacity: 0, y: 6 } : false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+                {...detailPanelSlide(shouldAnimate)}
                 className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7 flex flex-col gap-5 min-h-[300px]"
               >
                 {/* Large faint stage number */}
