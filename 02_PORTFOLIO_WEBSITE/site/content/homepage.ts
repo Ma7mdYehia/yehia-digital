@@ -438,7 +438,7 @@ export const journeyHeading =
 export const journeyIntro =
   "Nearly two decades across the UAE, KSA, and Egypt — building marketing engines, e-commerce operations, and business systems that connect strategy to execution.";
 export const journeyNote =
-  "Current Al-Shehail roles operate in parallel under one group context.";
+  "Current roles run in parallel — Al-Shehail group companies alongside the Nano Line portfolio.";
 
 export const learningCards: LearningCard[] = [
   {
@@ -464,120 +464,170 @@ export const learningCards: LearningCard[] = [
   },
 ];
 
+// Ordered to match the final CV (01_CV/MOHAMED_YEHIA_FINAL_CV.md) —
+// current roles first, then earlier roles, then compressed early career.
+// All wording is sourced from the final CV; no invented metrics or dates.
 export const journeyItems: JourneyItem[] = [
   {
-    id: "micro4host",
-    years: "2005–2009",
-    role: "Co-Founder & Digital Builder",
-    company: "Micro4Host",
-    market: "Egypt",
-    category: "Self-taught builder",
+    id: "alshehail-food",
+    years: "May 2024 – Present",
+    role: "Marketing, E-commerce & Business Systems Lead",
+    company: "Al-Shehail Food Industries — HÄLSA Bake",
+    market: "Dubai, UAE",
+    category: "FMCG · Group lead",
     achievement:
-      "Self-taught web development: built and grew community websites and early online audiences.",
+      "Leads marketing, e-commerce, digital growth, and business systems across Al-Shehail Food Industries, with a strong focus on the HÄLSA Bake clean-label FMCG brand.",
     bullets: [
-      "Self-taught web development from scratch",
-      "Built and ran community websites",
-      "Grew early online audiences through content",
+      "Built the digital growth direction for HÄLSA Bake — brand positioning, product communication, content operations, and retail support.",
+      "Launched and optimized the WooCommerce e-commerce platform: product structure, user journey, SEO readiness, and direct-to-consumer sales flow.",
+      "Planned Meta, TikTok, and Google campaign structures for awareness, acquisition, conversion, and retail visibility.",
+      "Generated 15M+ organic reach within 3 months through structured content planning and high-volume creative execution.",
+      "Structured internal reporting covering product data, sales tracking, distribution updates, and KPI monitoring.",
+      "Supported production-to-delivery documentation — product data, quotation support, delivery coordination, and internal records.",
     ],
-    focus: ["Web", "Community", "Content"],
+    focus: ["FMCG", "E-commerce", "Organic Growth", "Business Systems"],
+    current: true,
+  },
+  {
+    id: "elshohail",
+    years: "Mar 2021 – Present",
+    role: "Marketing & Business Operations Lead",
+    company: "El Shohail Trading",
+    market: "Riyadh, KSA",
+    category: "B2B operations",
+    achievement:
+      "Leads marketing, e-commerce, and business operations for a B2B food-processing machinery and industrial bakery equipment trading company.",
+    bullets: [
+      "Led the company’s first full Odoo ERP implementation — procurement, inventory, sales, and internal reporting workflows.",
+      "Redesigned the B2B digital presence and launched e-commerce workflows for product discovery, lead generation, and wholesale sales.",
+      "Planned and executed Meta and Google campaigns across machinery, bakery tools, and B2B product categories.",
+      "Strengthened exhibition support, dealer acquisition, and wholesale relationships across Saudi market channels.",
+      "Grew the social footprint to 50K+ targeted followers and 1M+ monthly category reach.",
+      "Supported marketplace and e-commerce operations across Zid, Salla, WooCommerce, Amazon, and Noon.",
+    ],
+    focus: ["B2B", "Odoo ERP", "E-commerce", "Lead Generation"],
+    current: true,
+    underGroup: "Al-Shehail Group",
+  },
+  {
+    id: "nano-line",
+    years: "Dec 2020 – Present",
+    role: "Growth Marketing, Business Systems & Digital Transformation Lead — Portfolio",
+    company: "Nano Line",
+    market: "GCC Region",
+    category: "Portfolio lead",
+    achievement:
+      "Supports a multi-activity business portfolio covering food industries, machinery, production lines, and healthcare.",
+    bullets: [
+      "Supports digital growth and business positioning for Nano Food Machine, Zucchelli Forni, ZadMak, and Al-Amin Clinics.",
+      "Develops websites, product pages, SEO structures, and content systems to improve visibility, trust, and inquiry quality.",
+      "Builds commercial presentation materials and internal reporting concepts for sales, KPI tracking, and management visibility.",
+      "Creates AI-assisted content, website, and workflow systems using ChatGPT, Claude, ClickUp, and GitHub.",
+      "Aligns marketing execution with sales operations, exhibitions, dealer communication, and digital transformation goals.",
+    ],
+    focus: ["Portfolio", "B2B", "AI Workflows", "Web Systems"],
+    current: true,
+  },
+  {
+    id: "ide-eg",
+    years: "Jan 2014 – Dec 2020",
+    role: "Co-Founder & Head of Growth",
+    company: "IDE.eg Group",
+    market: "Cairo, Egypt",
+    category: "Founder · Education",
+    achievement:
+      "Co-founded and scaled education and digital ventures under IDE.eg Group — including IMA, IDE Academy, and FABZ — across programming, technology, and digital learning.",
+    bullets: [
+      "Owned growth strategy across marketing, content, paid acquisition, CRM activity, community building, and student acquisition.",
+      "Built a community of 250K+ and served 5,500+ students across programming, technology, and digital learning tracks.",
+      "Secured Apple Authorized Training Provider alignment through LearnQuest for iOS App Development training.",
+      "Hosted Apple Tech Lead Boris Hernan as part of technology education and community-building initiatives.",
+      "Built partnerships and training relationships with institutions including AUC, GUC, and Ain Shams University.",
+      "Ran structured training cohorts every 45–60 days, connecting curriculum planning, campaigns, and delivery operations.",
+    ],
+    focus: ["Education", "Founder", "Community", "Growth"],
+  },
+  {
+    id: "pointer",
+    years: "Jan 2016 – Dec 2020",
+    role: "Digital Marketing Manager",
+    company: "Pointer Advertising",
+    market: "Cairo, Egypt",
+    category: "Agency",
+    achievement:
+      "Led agency-side digital marketing delivery across healthcare, corporate education, sports, fashion, and performance-driven campaigns.",
+    bullets: [
+      "Planned and executed Meta and Google campaigns covering awareness, engagement, traffic, lead generation, and conversion.",
+      "Built content calendars, campaign concepts, ad copy, approval workflows, and weekly client reporting.",
+      "Coordinated content strategists, designers, media buyers, web developers, and account teams to deliver on schedule.",
+      "Managed or supported projects for Prof. Karim Sabry, Dr. Hussein Ashour, Dr. Tolat El Samni, Dr. Rania Lotfy, and Dr. Osama El Teih.",
+      "Supported campaigns for Atlético Madrid Academy and Gama Academy.",
+    ],
+    focus: ["Agency", "Paid Media", "Healthcare", "Content"],
+  },
+  {
+    id: "mehrat-amal-masr",
+    years: "Early career",
+    role: "Digital Marketing & Campaign Support",
+    company: "Mehrat & Amal Masr",
+    market: "Egypt",
+    category: "Training & development",
+    achievement:
+      "Coordinated social media activity, campaign assets, content planning, and community engagement for professional training and development operations.",
+    bullets: [
+      "Coordinated social media activity and campaign assets.",
+      "Supported content planning for training and development programs.",
+      "Handled community engagement and audience communication.",
+    ],
+    focus: ["Social Media", "Content", "Training"],
+  },
+  {
+    id: "csc-export",
+    years: "Early career",
+    role: "Export Content & Web Support",
+    company: "CSC Export",
+    market: "China · Egypt · Australia · KSA",
+    category: "B2B export",
+    achievement:
+      "Supported international B2B digital content and export-focused web activity across multiple markets.",
+    bullets: [
+      "Maintained export-focused website updates and B2B product presentation.",
+      "Applied SEO basics across international market content.",
+      "Handled online inquiry communication across China, Egypt, Australia, and Saudi Arabia.",
+    ],
+    focus: ["B2B Export", "Web", "SEO"],
   },
   {
     id: "eid-labib",
     years: "2009–2013",
-    role: "Digital Marketing Executive",
-    company: "Eid Labib Group (HyperPlus, Tajerinn)",
+    role: "E-commerce & Retail Marketing Support",
+    company: "Eid Labib Group — Hyper Plus & Tajerinn",
     market: "Egypt",
-    category: "Retail marketing",
+    category: "Retail",
     achievement:
-      "Retail and e-commerce content, promotions, and early SEO across HyperPlus and Tajerinn.",
+      "Supported e-commerce content, retail promotions, and customer-facing product communication for a retail group.",
     bullets: [
-      "Retail and e-commerce content and promotions",
-      "Early SEO across HyperPlus and Tajerinn",
+      "Managed product listings, online catalog updates, and retail promotions.",
+      "Ran social media activity for Hyper Plus and Tajerinn.",
+      "Supported customer-facing product communication.",
     ],
-    focus: ["Retail", "E-commerce", "SEO"],
+    focus: ["Retail", "E-commerce", "Social Media"],
   },
   {
-    id: "ideaeg",
-    years: "2014–2020",
-    role: "Co-Founder & Head of Growth",
-    company: "IDEAEG Education Group",
+    id: "micro4host",
+    years: "2005–2009",
+    role: "Web, Hosting & SEO Specialist",
+    company: "Micro4Host",
     market: "Egypt",
-    category: "Founder · Education",
+    category: "Early foundation",
     achievement:
-      "Scaled education ventures with double-digit annual growth, a 250K+ community, and Apple AATP authorization.",
+      "Built the early technical foundation in web hosting, website building, and online community development.",
     bullets: [
-      "Co-founded and scaled education ventures",
-      "Scaled to double-digit annual growth and a 250K+ community",
-      "Secured Apple AATP authorization",
+      "Built websites with HTML, CSS, basic PHP, and CMS platforms.",
+      "Ran VBulletin communities and grew early online audiences.",
+      "Learned SEO basics and web hosting operations hands-on.",
     ],
-    focus: ["Education", "Growth", "Founder"],
-  },
-  {
-    id: "pointer",
-    years: "2016–2020",
-    role: "Digital Marketing Manager",
-    company: "Pointer Advertising",
-    market: "Egypt",
-    category: "Agency",
-    achievement:
-      "Led agency delivery across multiple client accounts, alongside IDEAEG.",
-    bullets: [
-      "Led agency delivery across multiple client accounts",
-      "Performance marketing and content for clients",
-    ],
-    focus: ["Agency", "Performance", "Content"],
-  },
-  {
-    id: "alshehail-group",
-    years: "2021–present",
-    role: "Group Marketing & Digital Growth Lead",
-    company: "Al-Shehail Group",
-    market: "UAE · KSA · Egypt",
-    category: "Group growth lead",
-    achievement:
-      "Cross-brand growth, digital, and business-systems leadership across UAE, KSA, and Egypt.",
-    bullets: [
-      "Cross-brand growth and digital leadership",
-      "Business-systems leadership across UAE · KSA · Egypt",
-      "Websites, e-commerce, and reporting workflows",
-    ],
-    focus: ["Group Growth", "Digital", "Systems"],
-    current: true,
-    isGroup: true,
-  },
-  {
-    id: "elshohail",
-    years: "2021–present",
-    role: "Marketing & Business Operations Lead",
-    company: "El Shohail Trading",
-    market: "KSA",
-    category: "B2B operations",
-    achievement:
-      "Delivered strong first-year revenue growth and led the company’s first full Odoo ERP implementation.",
-    bullets: [
-      "Delivered strong first-year revenue growth",
-      "Led the company’s first full Odoo ERP implementation",
-    ],
-    focus: ["B2B", "Revenue", "ERP"],
-    current: true,
-    underGroup: "Al-Shehail Group",
-  },
-  {
-    id: "halsa-bake",
-    years: "2024–present",
-    role: "Marketing & E-commerce Growth Manager",
-    company: "HÄLSA Bake",
-    market: "UAE",
-    category: "FMCG growth",
-    achievement:
-      "Launched the e-commerce channel and built an organic-led growth engine (~1.5M reach/month).",
-    bullets: [
-      "Launched the e-commerce channel",
-      "Built an organic-led growth engine (~1.5M reach/month)",
-    ],
-    focus: ["FMCG", "E-commerce", "Organic"],
-    current: true,
-    underGroup: "Al-Shehail Group",
+    focus: ["Web", "Hosting", "SEO", "Community"],
   },
 ];
 

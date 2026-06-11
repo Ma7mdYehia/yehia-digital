@@ -55,11 +55,8 @@ export default function ProfessionalJourney() {
   const isClient = useIsClient();
   const prefersReduced = useReducedMotion();
   const shouldAnimate = isClient && !prefersReduced;
-  const initial = Math.max(
-    0,
-    journeyItems.findIndex((r) => r.isGroup)
-  );
-  const [active, setActive] = useState(initial);
+  // Items follow the final CV order; the first (current lead role) starts active.
+  const [active, setActive] = useState(0);
   const role = journeyItems[active];
   const glowRef = useMouseGlow<HTMLElement>();
 
@@ -239,7 +236,7 @@ export default function ProfessionalJourney() {
               <motion.div
                 key={role.id}
                 {...detailPanelSlide(shouldAnimate)}
-                className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7 flex flex-col gap-5 min-h-[300px]"
+                className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7 flex flex-col gap-5 min-h-[300px] lg:h-full lg:min-h-[540px]"
               >
                 {/* Large faint stage number */}
                 <span
@@ -263,7 +260,12 @@ export default function ProfessionalJourney() {
                   <p className="text-sm text-[#3DBA8C] font-medium">{role.company}</p>
                 </div>
 
-                <p className="text-sm text-[#94A3B8] leading-relaxed">{role.achievement}</p>
+                <div className="flex flex-col gap-1.5">
+                  <p className="text-[10.5px] text-[#3DBA8C]/80 tracking-[0.18em] uppercase font-medium">
+                    Operating focus
+                  </p>
+                  <p className="text-sm text-[#94A3B8] leading-relaxed">{role.achievement}</p>
+                </div>
 
                 {/* Impact / responsibility bullets */}
                 {role.bullets && role.bullets.length > 0 && (
