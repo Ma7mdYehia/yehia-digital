@@ -5,11 +5,13 @@ import {
   Github,
   Instagram,
   Palette,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 import type { ContactLink } from "@/content/homepage";
 
 // Behance has no lucide brand glyph — Palette is the neutral stand-in.
+// WhatsApp likewise — MessageCircle is the closest neutral glyph.
 export const contactIcons: Record<ContactLink["icon"], LucideIcon> = {
   mail: Mail,
   linkedin: Linkedin,
@@ -17,6 +19,7 @@ export const contactIcons: Record<ContactLink["icon"], LucideIcon> = {
   github: Github,
   instagram: Instagram,
   behance: Palette,
+  whatsapp: MessageCircle,
 };
 
 /**

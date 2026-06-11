@@ -615,10 +615,10 @@ export const contactCTA = {
 
 export interface ContactLink {
   label: string;
-  type: "email" | "cv" | "social";
+  type: "email" | "cv" | "social" | "whatsapp";
   href: string;
-  icon: "mail" | "linkedin" | "download" | "github" | "instagram" | "behance";
-  /** Primary actions row (Email / LinkedIn / Download CV). */
+  icon: "mail" | "linkedin" | "download" | "github" | "instagram" | "behance" | "whatsapp";
+  /** Primary actions row (Email / LinkedIn / WhatsApp / Download CV). */
   isPrimary: boolean;
   /** No confirmed URL yet — rendered but non-misleading. */
   isPlaceholder: boolean;
@@ -627,11 +627,12 @@ export interface ContactLink {
 }
 
 // Confirmed values in use: GitHub (https://github.com/Ma7mdYehia),
+// LinkedIn (https://www.linkedin.com/in/ma7mdyehia/),
+// Instagram (https://www.instagram.com/m7mdyehia),
+// WhatsApp (https://wa.me/201050581448),
 // email (ma7md.yehia@gmail.com), and the CV PDF (public/files/...).
-// TODO: replace these placeholder hrefs with real profile URLs once confirmed:
-//   LinkedIn  -> "https://www.linkedin.com/in/<handle>"
-//   Instagram -> "https://www.instagram.com/<handle>"
-//   Behance   -> "https://www.behance.net/<handle>"
+// TODO: replace the Behance placeholder href with the real profile URL once confirmed:
+//   Behance -> "https://www.behance.net/<handle>"
 // Placeholders point to "#contact" (no fake destination, no new tab).
 export const contactLinks: ContactLink[] = [
   {
@@ -645,10 +646,20 @@ export const contactLinks: ContactLink[] = [
   {
     label: "LinkedIn",
     type: "social",
-    href: "#contact",
+    href: "https://www.linkedin.com/in/ma7mdyehia/",
     icon: "linkedin",
     isPrimary: true,
-    isPlaceholder: true,
+    isPlaceholder: false,
+    external: true,
+  },
+  {
+    label: "WhatsApp",
+    type: "whatsapp",
+    href: "https://wa.me/201050581448",
+    icon: "whatsapp",
+    isPrimary: true,
+    isPlaceholder: false,
+    external: true,
   },
   {
     label: "Download CV",
@@ -670,10 +681,11 @@ export const contactLinks: ContactLink[] = [
   {
     label: "Instagram",
     type: "social",
-    href: "#contact",
+    href: "https://www.instagram.com/m7mdyehia",
     icon: "instagram",
     isPrimary: false,
-    isPlaceholder: true,
+    isPlaceholder: false,
+    external: true,
   },
   {
     label: "Behance",
