@@ -1,25 +1,25 @@
-<<<<<<< HEAD
-# Yehia.Digital
+# A-Zaid
 
-Personal portfolio, CV system, AI transformation demos, dashboards, and proof-of-work project for Mohamed Yehia.
+Abdulrahman Zaid digital profile and business portfolio website.
 
-## Positioning
+## Source baseline
 
-Growth Marketing, E-commerce & AI Transformation Lead
+This repository is being prepared from the approved `Beta.R01` branch of `Ma7mdYehia/yehia-digital` as the starting visual and technical base.
 
-## Core Direction
+## Project direction
 
-Building marketing engines, e-commerce growth systems, AI-powered dashboards, internal reporting workflows, AI social automation systems, and company websites that connect strategy, execution, data, and business operations.
+Position Abdulrahman Zaid as a MENA industrial entrepreneur and operating leader with business activity across Egypt, Saudi Arabia, and the UAE.
 
-## Main Project Areas
+## Main website path
 
-- CV & Executive Profile
-- Portfolio Website
-- AI Social Automation Demo
-- Growth Dashboard Demo
-- Company Reporting System Demo
-- GitHub Proof-of-Work
-- LinkedIn & Job Application Assets
-=======
-# yehia-digital
->>>>>>> f973fdd28c92b892da6abf5d13c0f4123d331346
+```bash
+02_PORTFOLIO_WEBSITE/site
+```
+
+## Local run
+
+```bash
+cd 02_PORTFOLIO_WEBSITE/site
+npm install
+npm run dev
+```
