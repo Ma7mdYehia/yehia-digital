@@ -1,11 +1,10 @@
 import FloatingNav from "@/components/FloatingNav";
 import HeroSection from "@/components/HeroSection";
-import WhoIAmSection from "@/components/WhoIAmSection";
-import WhatIDoOperatingPanel from "@/components/WhatIDoOperatingPanel";
-import OperatingStackSection from "@/components/OperatingStackSection";
+import ProofStrip from "@/components/ProofStrip";
+import AboutSnapshot from "@/components/AboutSnapshot";
+import CapabilitiesSection from "@/components/CapabilitiesSection";
+import ToolsSection from "@/components/ToolsSection";
 import SelectedWorkSection from "@/components/SelectedWorkSection";
-// Proof & Voices is temporarily hidden until verified quotes are approved.
-// import ProofVoicesSection from "@/components/ProofVoicesSection";
 import ProfessionalJourney from "@/components/ProfessionalJourney";
 import HowIWorkSection from "@/components/HowIWorkSection";
 import ContactCTA from "@/components/ContactCTA";
@@ -19,11 +18,15 @@ export default function HomePage() {
       <main>
         <HeroSection />
 
-        <WhoIAmSection />
-        <WhatIDoOperatingPanel />
-        <OperatingStackSection />
+        <div className="px-6 lg:pl-24 lg:pr-16">
+          <div className="max-w-6xl mx-auto h-px bg-white/[0.06]" />
+        </div>
+
+        <ProofStrip />
+        <AboutSnapshot />
+        <CapabilitiesSection />
+        <ToolsSection />
         <SelectedWorkSection />
-        {/* <ProofVoicesSection /> */}
         <ProfessionalJourney />
         <HowIWorkSection />
         <ContactCTA />
